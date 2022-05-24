@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .container{
+        height: 530px;
+        width: 100%;
+        border: 0px solid black;
+       margin: auto;
+       margin-top: 100px;
+    }
+    .upper{
+        height: 25%;
+        width: 80%;
+        border: 0px solid black;  
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .lower{
+        height: 75%;
+        width: 80%;
+        border: 0px solid black;  
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: auto;
+       
+        
+
+    }
+    .box{
+        box-sizing: border-box;
+        border: 0px solid black;
+    }
+    #para{
+        font-size: 45px;
+        font-weight: bolder;
+        font-family: sans-serif;
+    }
+
+     #name{
+            text-align: center;
+        font-family: sans-serif;
+        font-size: 22px;
+        margin-top: 10px;
+        }
+    #post{
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 18px;
+        margin-top: -15px;
+    }
+    #logoimage{
+        
+        height: 70px;
+        width: 150px;
+        display: block;
+        margin: auto;
+        margin-top: -30px;
+    }
+    
+</style>
+<body>
+    
+</body>
+</html>
+
+<script>
+    var investors=[
+       { 
+           img:"https://masai-website-images.s3.ap-south-1.amazonaws.com/Vijay_Shekhar_Sharma_Paytm_96f52579b8.jpg",
+           name:"Vijay Shekhar Sharma",
+           position:"Founder & CEO",
+           companylogo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg"
+        },
+        { 
+           img:"https://masai-website-images.s3.ap-south-1.amazonaws.com/Rectangle_427_637d69bb57.png",
+           name:"Kunal Shah",
+           position:"Founder",
+           companylogo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/cred_0a47d7b4f8.png"
+        },
+        { 
+           img:"https://masai-website-images.s3.ap-south-1.amazonaws.com/amrish_rau_pine_labs_144e5e587c.jpg",
+           name:"Amrish Rau",
+           position:"CEO",
+           companylogo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/pine_labs_0aa2407434.png"
+        },
+        { 
+           img:"https://masai-website-images.s3.ap-south-1.amazonaws.com/Sampad_swain_Instamojo_f12bf6341e.jpg",
+           name:"Sampad Swain",
+           position:"Co-Founder & CEO",
+           companylogo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/instamojo_8763e704f7.png"
+        }
+       
+    ];
+
+
+
+    var container=document.createElement("div");
+    container.setAttribute("class","container");
+    var upper=document.createElement("div")
+    upper.setAttribute("class","upper");
+    var p=document.createElement("p")
+    p.setAttribute("id","para");
+    p.innerText="Strategic Investors";
+    upper.append(p)
+    var lower=document.createElement("div")
+     lower.setAttribute("class","lower");
+    investors.map(function(el){
+        var box=document.createElement("div")
+        box.setAttribute("class","box")
+        var image=document.createElement('img')
+        image.setAttribute("id","image")
+        image.src=el.img;
+        var name =document.createElement('h3')
+        name.setAttribute("id","name");
+        name.innerText=el.name ;
+        var post =document.createElement('p')
+        post.setAttribute("id","post");
+        post.innerText=el.position;
+        var logoimage=document.createElement('img')
+        logoimage.setAttribute("id","logoimage")
+        logoimage.src=el.companylogo;
+        box.append(image,name,post,logoimage);
+        lower.append(box)
+
+    });
+    container.append(upper,lower);
+    document.querySelector("body").append(container);
+
+
+</script>

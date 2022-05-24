@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        input{
+          margin: 0px 60px;
+            margin-top: 100px;
+            height: 30px;
+            width: 200px;
+            font-weight: bold;
+        }
+
+        p{
+            margin: 30px 100px;
+            font-size:25px ; 
+            color: red;
+           
+        }
+        button{
+            height: 30px;
+            border: none;
+            background-color: rgb(57, 124, 57);
+            color: white;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <input id="A" type="number" placeholder="Enter a Number">
+    <input id="B" type="number" placeholder="Enter a Number">
+    <button id="multi">Click here to find the exponent!</button>
+    <p>Exponential</p>
+</body>
+</html>
+
+<script>
+    document.querySelector("#multi").addEventListener("click",myfunction)
+    function myfunction()
+    {
+       var a=document.querySelector("#A").value
+       var b=document.querySelector("#B").value
+       alert(a*b);
+       var num=1;
+       for(var i=0;i<b;i++)
+       {
+          num=num*a;
+          
+       }
+       document.querySelector("p").innerText=num;
+    }
+</script>

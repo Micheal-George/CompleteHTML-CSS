@@ -1,0 +1,182 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       #query
+       {
+           width: 400px;
+       }
+       #movies{
+           
+           height: 300px;
+           width: 500px;
+           border-top: none;
+           overflow:auto;  
+       }
+       #container{
+           display: flex;
+       }
+       #main{
+           margin:5% auto;
+           display: flex;
+           height: 300px;
+           width: 700px;
+           box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+       }
+       #image{
+        width: 100%;
+        height: 100%;
+       }
+       #details{
+           width: 300px;
+       }
+       h2,h3{
+           margin-left: 20px;
+       }
+       #box{
+           display: flex;
+       }
+       #image1{
+           height: 120px;
+           width: 200px;
+       }
+       #navbar{
+    display: flex;
+    justify-content:space-between;
+    background-color: teal;
+    align-items: center;
+    height: 80px;
+    gap: 10px;
+}
+#contai{
+    display: flex;
+    gap: 20px;
+    font-size: 22px;
+    color: white;
+    margin-right: 20px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+        input{
+            margin-top: 80px;
+        }
+        #hot{
+            margin-left: 20px;
+            font-size: 28px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div id="hot"><h3>Hotstar</h3></div>
+        <div id="contai">
+            <div>Home</div>
+            <div><a href="rending.html" >Trending</a></div>
+            <div>Login</div>
+            <div>Signup</div>
+          </div>   
+    </div>
+    <div id="container">
+        <div>
+    <input oninput="debounce(main,1000)" type="text" id="query">
+
+    <div id="movies"></div>
+</div>
+    <div id="main">
+        <div id="details"></div>
+        <div id="para"></div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    let id
+    async function searchMovies(){
+        try {
+            const query=document.querySelector("#query").value
+            let url=`https://api.themoviedb.org/3/search/movie?api_key=3f2f83dd6f1bb795c2fe307158573342&language=en-US&page=1&include_adult=false&query=${query}`
+            let res=await fetch(url)
+        
+            let data =await res.json()
+            console.log(data)
+            const movies=data.results
+
+            return movies
+        
+        }  catch (err){
+            console.log(err)
+        }
+    }
+
+    function appendMovies(data){
+       
+        document.querySelector("#movies").innerHTML=""
+        
+      data.map(function(elem){
+          let p=document.createElement("p")
+          p.innerText=elem.title;
+         
+         
+          let box=document.createElement("div")
+            box.setAttribute("id","box")
+            let image1=document.createElement("img")
+            image1.setAttribute("id","image1")
+            image1.src=`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${elem.poster_path}`;
+
+            box.append(image1,p)
+            document.querySelector("#movies").append(box)
+          box.addEventListener("click",function(){
+            
+              let poster=document.querySelector("#details")
+              let para=document.querySelector("#para")
+              let name=document.createElement("h2")
+              let year=document.createElement("h3")
+              let imbd=document.createElement("h3")
+              let image=document.createElement("img")
+              image.setAttribute("id","image")
+              imbd.innerText="IMBD Rating : " +elem.vote_average;
+              year.innerText="Releasing Year : "+elem.release_date;
+              name.innerText=elem.itle;
+              poster.innerHTML="";
+              para.innerHTML=""
+             console.log(elem)
+             
+             image.src=`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${elem.poster_path}`;
+             
+          poster.append(image)
+          para.append(name,year,imbd)
+})
+      })
+    }
+
+    async function main()
+    {
+        let data =await searchMovies()
+        if(data==undefined)
+        {
+            return
+        }
+        appendMovies(data)
+    }
+
+
+    function debounce(func,delay)
+    {
+        if(id){
+            clearTimeout(id)
+        }
+        id=setTimeout(function(){
+            func()
+        },delay)
+    }
+</script>

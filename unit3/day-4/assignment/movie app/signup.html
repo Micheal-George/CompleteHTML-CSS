@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #navbar
+        {
+            height: 70px;
+            width: 100%;
+            background-color: teal;
+            margin-top: 10px;
+            display: flex;
+            justify-content:flex-end;
+        }
+        #main{
+            width: 800px;
+            height: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-content: center;
+        }
+        h3{
+            display: inline;
+            font-size: 22px;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+        }
+        #container{
+            height: 500px;
+            width: 400px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin: 60px auto;
+           padding-left: 35px;
+           padding-top: 20px;
+        }
+        input{
+            margin-left: 30px;
+            width: 200px;
+            font-size: 17px;
+        }
+        p{
+            font-size: 17px;
+        }
+        #submit{
+            display: block;
+            margin: 8% auto;
+            background-color: #2d8cff;
+            color: white;
+            border: none;
+            padding: 5px 30px;
+            cursor: pointer;
+        }
+       
+      
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div id="main">
+            <h3><a href="index.html">HOME</a></h3>
+           <h3><a href="login.html"> LOGIN</a></h3>
+           <h3> <a href="signup.html">SIGNUP</a></h3>
+        </div>
+    </div>
+    <div id="container">
+        <form action="" id="form">
+           <table>
+               <thead></thead>
+               <tbody>
+                   <tr>
+                       <td> <p>Name</p></td>
+                       <td> <input type="text" placeholder="Enter Name" id="name"> </td>
+                   </tr>
+                   <tr>
+                       <td><p>Contact Number</p></td>
+                       <td> <input type="number" placeholder="Enter contact No" id="num"></td>
+                   </tr>
+                   <tr>
+                    <td><p>Email</p></td>
+                    <td> <input type="text" placeholder="Enter Email" id="email"></td>
+                </tr>
+                <tr>
+                    <td><p>Password</p></td>
+                    <td><input type="password" placeholder="Enter Password" id="pass"></td>
+                </tr>
+              
+               </tbody>
+           </table>
+            <input type="Submit" id="submit" >
+        </form>
+    </div>
+</body>
+</html>
+
+<script>
+     let Sdata=JSON.parse(localStorage.getItem("Signupdata"))||[]
+
+     document.querySelector("#submit").addEventListener("click",myFun)
+
+     function myFun()
+     {
+         event.preventDefault()
+        let name=document.querySelector("#name").value;
+        let num=document.querySelector("#num").value;
+        let email=document.querySelector("#email").value;
+        let pass=document.querySelector("#pass").value;
+      if(name==""||num==""||email==""||pass=="")
+      {
+          alert("signup incomplete")
+      }
+      else{
+        function confun(N,n,E,P)
+        {
+            this.name=N;
+            this.num=n;
+            this.email=E;
+            this.pass=P;
+        }
+        let X=new confun(name,num,email,pass)
+       
+        Sdata.push(X)
+
+        document.querySelector("#name").value=null;
+        document.querySelector("#num").value=null;
+        document.querySelector("#email").value=null;
+        document.querySelector("#pass").value=null;
+        localStorage.setItem("Signupdata",JSON.stringify(Sdata))
+    }
+     }
+</script>

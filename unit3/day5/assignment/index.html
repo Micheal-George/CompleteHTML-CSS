@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       #main{
+           display: flex;
+       }
+        #logo{
+            width: 10%;
+            height: 100%;
+            box-shadow: none;
+        }
+        #container{
+            height: auto;
+            width: 450px;
+        }
+        h3{
+            display: inline;
+            text-align: center;
+        }
+       
+        input{
+            height: 20px;
+            width: 20px;
+        }
+        .box{
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            padding: 2%;
+        }
+        img{
+            width: 100%;
+            height: 70%;
+        }
+        #navbar{
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+        }
+        button{
+            display: block;
+            margin:5% auto;
+            width: 100%;
+            font-size: 20px;
+        }
+        #show{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 10px;
+            padding: 2%;
+        }
+        img{
+            height: 250px;
+            width: 350px;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        }
+        h1{
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <img id="logo" src="https://www.mcdonalds.com/content/dam/sites/usa/nfl/icons/arches-logo_108x108.jpg" alt="">
+       <div>
+           <h1 id="showcount"></h1>
+       </div>
+    </div>
+    <div id="main">
+    <div id="container">
+        <div class="box">
+        <input type="checkbox" id="chickenburger" value="chickenburger" onclick="burg()">
+      <label for="chickenburger"><h3>Spicy Crispy Chicken Sandwich</h3></label>
+            
+        </div>
+        <div class="box">
+            <input type="checkbox" id="chickennuggets" value="chickennuggets" onclick="nugg()">
+            <label for="chickennuggets"><h3>Chicken McNuggets</h3></label>
+                  
+        </div>
+        <div class="box">
+            <input type="checkbox" id="eggburger" value="eggburger" onclick="egg()">
+            <label for="eggburger"><h3> Egg McMuffin</h3></label>
+                  
+        </div>
+        <div class="box">
+            <input type="checkbox" id="bigmac" value="bigmac" onclick="bmac()">
+            <label for="bigmac"><h3>Big Mac</h3></label>
+                  
+        </div>
+        <div class="box">
+            <input type="checkbox" id="bigmaccombo" value="bigmaccombo" onclick="combo()">
+            <label for="bigmaccombo"><h3>Big Mac Combo Meal</h3></label>
+                  
+        </div>
+        <div class="box">
+            <input type="checkbox" id="doublequarter" value="doublequarter" onclick="dq()">
+            <label for="doublequarter"><h3>Double Quarter Pounder®* with Cheese Meal</h3></label>
+                  
+        </div>
+        <div class="box">
+            <input type="checkbox" id="crispycombo" value="crispycombo" onclick="ccomb()">
+            <label for="crispycombo"><h3>Spicy Crispy Chicken Sandwich Combo Meal</h3></label>
+                  
+        </div>
+        <div class="box">
+            <input type="checkbox" id="deluxcrispy" value="deluxcrispy" onclick="dc()">
+            <label for="deluxcrispy"><h3>Deluxe Crispy Chicken Sandwich Combo Meal</h3></label>
+                  
+        </div>
+        <div class="box">
+            <input type="checkbox" id="macchiato" value="macchiato" onclick="macc()">
+            <label for="macchiato"><h3>Caramel Macchiato</h3></label>
+                  
+        </div>
+        <div class="box">
+            <input type="checkbox" id="icedmacchiato" value="icedmacchiato" onclick="icemacc()">
+            <label for="icedmacchiato"><h3>Iced Caramel Macchiato</h3></label>
+                  
+        </div>
+        <div class="box">
+            <input type="checkbox" id="mocha" value="mocha" onclick="moc()">
+            <label for="mocha"><h3>Mocha</h3></label>
+                  
+        </div>
+        <div class="box">
+            <input type="checkbox" id="Americano" value="Americano" onclick="usa()">
+            <label for="Americano"><h3>Americano</h3></label>
+                  
+        </div>
+        <button onclick="myFun()">Order food</button>
+</div>
+<div id="show">
+
+</div>
+</div>
+    
+</body>
+</html>
+<script>
+    const data=[{
+        name:"chickenburger",
+        url:"https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-spicy-crispy-chicken-sandwich:1-4-product-tile-desktop"
+    },
+    {
+        name:"chickennuggets",
+        url:"https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-Chicken-McNuggets-4pc-1:product-header-desktop?wid=829&hei=455&dpr=off"
+    },
+    {
+        name:"eggburger",
+        url:"https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-Egg-McMuffin-1:1-4-product-tile-desktop"
+    },
+    {
+        name:"bigmac",
+        url:"https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-Big-Mac-1:1-4-product-tile-desktop"
+    },
+    {
+        name:"bigmaccombo",
+        url:"https://s7d1.scene7.com/is/image/mcdonalds/h-mcdonalds-Big-Mac-Extra-Value-Meals:1-4-product-tile-desktop"
+    },
+    {
+        name:"doublequarter",
+        url:"https://s7d1.scene7.com/is/image/mcdonalds/h-mcdonalds-Double-Quarter-Pounder-with-Cheese-Extra-Value-Meals-combo:1-4-product-tile-desktop"
+    },
+    {
+        name:"crispycombo",
+        url:"https://s7d1.scene7.com/is/image/mcdonalds/h-spicy-crispy-chicken-sandwich-meal-combo:1-4-product-tile-desktop"
+    },
+    {
+        name:"deluxcrispy",
+        url:"https://s7d1.scene7.com/is/image/mcdonalds/h-deluxe-crispy-chicken-sandwich-meal:1-4-product-tile-desktop"
+    },
+    {
+        name:"macchiato",
+        url:"https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-caramel-macchiato:1-4-product-tile-desktop"
+    },
+    {
+        name:"icedmacchiato",
+        url:"https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-iced-caramel-macchiato-1:1-4-product-tile-desktop"
+    },
+    {
+        name:"mocha",
+        url:"https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-McCafe-Mocha-Medium:1-4-product-tile-desktop"
+    },
+    {
+        name:"Americano",
+        url:"https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-americano-1:1-4-product-tile-desktop"
+    }
+    ]
+
+    let arr=[];
+  let counter=localStorage.getItem("count")||101;
+    function myFun(){
+        console.log(arr)
+        document.querySelector("#show").innerHTML=null
+        setTimeout(showitem,5000)
+            
+    }
+    function test(){
+        
+       window.location.reload()
+    }
+    function burg(){
+        data.map(function(elem){
+            if(document.querySelector("#chickenburger").value==elem.name)
+            {
+                arr.push(elem)
+            }
+        
+        })        
+  }
+  function nugg(){
+    data.map(function(elem){
+            if(document.querySelector("#chickennuggets").value==elem.name)
+            {
+                arr.push(elem)
+            }
+        
+        })
+  }
+  function egg(){
+    data.map(function(elem){
+            if(document.querySelector("#eggburger").value==elem.name)
+            {
+                arr.push(elem)
+            }
+        
+        })
+  }
+  function bmac(){
+    data.map(function(elem){
+            if(document.querySelector("#bigmac").value==elem.name)
+            {
+                arr.push(elem)
+            }
+        
+        })
+  }
+  function combo(){
+    data.map(function(elem){
+            if(document.querySelector("#bigmaccombo").value==elem.name)
+            {
+                arr.push(elem)
+            }
+        
+        })
+  }
+  function dq(){
+    data.map(function(elem){
+            if(document.querySelector("#cdoublequarter").value==elem.name)
+            {
+                arr.push(elem)
+            }
+        
+        })
+  }
+  function ccomb(){
+    data.map(function(elem){
+            if(document.querySelector("#crispycombo").value==elem.name)
+            {
+                arr.push(elem)
+            }
+        
+        })
+  }
+  function dc(){
+    data.map(function(elem){
+            if(document.querySelector("#deluxcrispy").value==elem.name)
+            {
+                arr.push(elem)
+            }
+        
+        })
+  }
+  function macc(){
+    data.map(function(elem){
+            if(document.querySelector("#macchiato").value==elem.name)
+            {
+                arr.push(elem)
+            }
+        
+        })
+  }
+  function icemacc(){
+    data.map(function(elem){
+            if(document.querySelector("#icedmacchiato").value==elem.name)
+            {
+                arr.push(elem)
+            }
+        
+        })
+  }
+  function moc(){
+    data.map(function(elem){
+            if(document.querySelector("#mocha").value==elem.name)
+            {
+                arr.push(elem)
+            }
+        
+        })
+  }
+  function usa(){
+    data.map(function(elem){
+            if(document.querySelector("#Americano").value==elem.name)
+            {
+                arr.push(elem)
+            }
+        
+        })
+  }
+ function showitem(){
+    arr.map(function(elem){
+         let image=document.createElement("img")
+         image.src=elem.url;
+         document.querySelector("#show").append(image)      })
+  
+  document.querySelector("#chickennuggets").innerText=""
+  counter++;
+  document.querySelector("#showcount").innerText="order id:"+counter
+  localStorage.setItem("count",counter)
+  console.log(counter)
+  arr=[];
+  setTimeout(test,5000)
+ }
+ document.querySelector("#showcount").innerText="order id: "+counter
+</script>
+
+
+
+
+
+

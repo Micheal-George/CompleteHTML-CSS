@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+body{
+    background-color: black;
+
+}
+    div{
+        display: flex;
+        gap: 10px;
+        padding: 35px 75px;
+        background-color: white;
+        margin-top: 300px;
+    }
+.main{
+    border: none;
+    font-size: 35px;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+</style>
+<body>
+    <div>
+
+    </div>
+    
+</body>
+</html>
+<script>
+    var buttonObj = [
+    { textContent: "Primary", color: "white", bgColor: "blue" },
+    { textContent: "Secondary", color: "white", bgColor: "grey" },
+    { textContent: "Danger", color: "white", bgColor: "red" },
+    { textContent: "Warning", color: "black", bgColor: "yellow" },
+    { textContent: "Info", color: "white", bgColor: "cyan" },
+    { textContent: "Light", color: "black", bgColor: "white" },
+    { textContent: "Success", color: "white", bgColor: "green" },
+    { textContent: "Dark", color: "white", bgColor: "black" },
+    { textContent: "Link", color: "blue", bgColor: "white" },
+  ];
+
+  buttonObj.map(function(el)
+  {
+    var but1= document.createElement("button");
+    but1.setAttribute("class","main");
+    but1.innerText=el.textContent;
+    but1.style.color=el.color;
+    but1.style.backgroundColor=el.bgColor;
+    
+   document.querySelector("div").append(but1);
+
+  });
+
+</script>

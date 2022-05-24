@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+
+ function my()
+ {
+     Object.defineProperty(this,"length",{//but in array along with the arguments there will length to overcome this problem we use another property 
+        value:0,
+        writable:true,
+        enumerable:false, //output will be [x,y,z] dont count the property length
+        // enumerable:true, output will be [x,y,z,3]
+     });
+     this.length=arguments.length;
+     for(let i=0;i<this.length;i++)
+     {
+         this[i]=arguments[i]//x,y,z are the arguments
+         
+     }
+ }
+
+ let a2=new my("x","y","z");
+console.log(Object.values(a2))
+
+let a1=new Array()
+// console.log(a1)  //output will be an object
+// to convert object into array we use Object.value()
+
+
+</script>

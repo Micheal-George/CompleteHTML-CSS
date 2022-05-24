@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./scripts/nav.css">
+    <title>Document</title>
+</head>
+<style>
+   #main{
+       display: grid;
+       gap: 20px;
+       padding: 10px 50px;
+   }
+   #box{
+    border: 1px solid teal;
+       border-radius: 20px;
+       padding: 10px 50px;
+   }
+   #box1{
+       display: flex;
+       justify-content: space-between;
+   } 
+   #image{
+       height: 350px;
+       width: 900px;
+   }
+</style>
+<body>
+    <div id="navbar"></div>
+    <div id="main"></div>
+</body>
+</html>
+
+<script type="module">
+    import {navbar} from "./scripts/navbar.js"
+    document.querySelector("#navbar").innerHTML=navbar()
+   
+  
+ 
+    async function searchFood(){
+        try{
+           
+            let url=`https://www.themealdb.com/api/json/v1/1/random.php`;
+            let res=await fetch(url)
+            let data= await res.json()
+            Append(data.meals)
+            console.log(data)
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+    searchFood()
+
+  function Append(data){
+      document.querySelector("#main").innerHTML=""
+      data.map(function(elem){
+          let box=document.createElement("div")
+          box.setAttribute("id","box")
+          let box1=document.createElement("div")
+          box1.setAttribute("id","box1")
+     let image=document.createElement("img")
+     image.src=elem.strMealThumb
+     image.setAttribute("id","image")
+          let item=document.createElement("h2")
+          item.innerText=elem.strMeal
+          let ing=document.createElement("h4")
+          ing.innerText=elem.strIngredient1+" : "+elem.strMeasure1+"\n"+elem.strIngredient2+" : "+elem.strMeasure2+"\n"+elem.strIngredient3+" : "+elem.strMeasure3+"\n"+elem.strIngredient4+" : "+elem.strMeasure4+"\n"+elem.strIngredient5+" : "+elem.strMeasure5+"\n"+elem.strIngredient6+" : "+elem.strMeasure6+"\n"+elem.strIngredient7+" : "+elem.strMeasure7+"\n"+elem.strIngredient8+" : "+elem.strMeasure8+"\n"+elem.strIngredient9+" : "+elem.strMeasure9+"\n"+elem.strIngredient10+" : "+elem.strMeasure10+"\n"+elem.strIngredient11+" : "+elem.strMeasure11+"\n"+elem.strIngredient12+" : "+elem.strMeasure12+"\n"+elem.strIngredient13+" : "+elem.strMeasure13+"\n"+elem.strIngredient14+" : "+elem.strMeasure14+"\n"+elem.strIngredient15+" : "+elem.strMeasure15+"\n"+elem.strIngredient16+" : "+elem.strMeasure16+"\n"+elem.strIngredient17+" : "+elem.strMeasure17+"\n"+elem.strIngredient18+" : "+elem.strMeasure18
+         let cooking=document.createElement("h5")
+         cooking.innerText=elem.strInstructions
+        box1.append(ing,image)
+          box.append(item,box1,cooking)
+          document.querySelector("#main").append(box)
+      })
+  }
+</script>

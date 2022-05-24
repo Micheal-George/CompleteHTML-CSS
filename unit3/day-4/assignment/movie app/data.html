@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="Enter Film Name" id="name">
+    <input type="date" placeholder="Enter Release date" id="date">
+    <input type="text" placeholder="Enter IMBD rating" id="rating">
+    <input type="text " id="url" placeholder="Enter URL">
+    <button onclick="storeimg()">Submit URL</button>
+</body>
+</html>
+
+<script>
+    let moviedata=JSON.parse(localStorage.getItem("MOdata"))||[]
+    function storeimg()
+    {
+        let image=document.querySelector("#url").value;
+        let name=document.querySelector("#name").value;
+        let date=document.querySelector("#date").value;
+        let rating=document.querySelector("#rating").value;
+     
+        function consFun(N,D,R,I)
+        {
+            this.name=N;
+            this.date=D;
+            this.rating=R;
+            this.image=I
+        }
+    var x=new consFun(name,date,rating,image)
+    moviedata.push(x)
+    
+    localStorage.setItem("MOdata",JSON.stringify(moviedata))
+    document.querySelector("#url").value=null
+    document.querySelector("#name").value=null
+    document.querySelector("#date").value=null
+    document.querySelector("#rating").value=null
+    }
+   
+</script>

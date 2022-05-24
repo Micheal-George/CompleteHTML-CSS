@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .product
+        {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            padding: 20px 60px;
+            gap: 20px;
+        }
+        #counter{
+            font-size: 30px;
+            margin-left: 60px;
+        }
+        #box{
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          
+        }
+        #image{
+            width: 100%;
+        }
+
+        button{
+            display: block;
+            margin: auto;
+            width: 60px;
+        }
+    </style>
+    <div id="counter"></div>
+    <div class="product">
+        
+    </div>
+</body>
+</html>
+<script>
+   var products=JSON.parse(localStorage.getItem("Products"))
+  var  num=products.length;
+  document.querySelector("#counter").innerText="Number of items "+num;
+  products.map(function(elem,index)
+  {
+    var box=document.createElement("div");
+    box.setAttribute("id","box");
+   var image=document.createElement("img")
+   image.setAttribute("id","image")
+   image.src=elem.image_url;
+   var name=document.createElement("h3");
+    name.innerText=elem.name;
+    var price=document.createElement("h4")
+    price.innerText=elem.price;
+   
+    
+    var btn=document.createElement("button");
+    btn.innerText="Remove";
+    btn.addEventListener("click",function(){
+    remove(elem,index)})
+
+    var btnS=document.createElement("button");
+    btnS.innerText="Sold";
+    btnS.addEventListener("click",function(){
+    Sold(elem,btnS)})
+
+
+
+    box.append(image,name,price,btn,btnS)
+    document.querySelector(".product").append(box)
+  })
+
+function remove(elem,index)
+{
+    console.log("mmm")
+ products.splice(index,1)  
+ localStorage.setItem("Products", JSON.stringify(products)) 
+ window.location.reload();
+}
+
+function Sold(elem,btnS)
+{
+    console.log(elem.sold)
+if(elem.sold=="true")
+{
+    btnS.style.backgroundColor="green"
+}
+if(elem.sold=="false"){
+btnS.style.backgroundColor="red" 
+}
+}
+
+</script>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #container{
+        display: flex;
+        border: 1px solid black;
+    }
+    #input,#output{
+       width: 50%;
+        margin: 5%;
+        height: 250px;
+        border: 1px solid black;
+    }
+    #input-text{
+        width: 90%;
+        height: 80%;
+    }
+</style>
+<body>
+    <div id="container">
+        <div id="input">
+            <button id="trans" >Translate</button>
+            <select name="" id="inp_lang">
+                <option value="en">English</option>
+                <option value="hi">Hindi</option>
+            </select>
+            <textarea name="input-text" id="input-text" cols="30" rows="10" oninput="debounce(translate,2000)" ></textarea>
+        </div>
+        <div id="output">
+            <select name="" id="oup_lang">
+                <option value="en">English</option>
+                <option value="hi">Hindi</option>
+            </select>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    let id;
+    document.querySelector('#trans').addEventListener("click",translate)
+  async  function translate()
+    {
+        
+       try { let input=document.querySelector('#input-text').value
+       const inplang=document.querySelector('#inp_lang').value
+       const ouplang=document.querySelector('#oup_lang').value
+       const res= await fetch("https://libretranslate.de/translate",
+       {
+           method:"POST",
+           body:JSON.stringify({
+               q:input,
+               source:inplang,
+               target:ouplang,
+               format:"text",
+           }),
+           headers:{
+           "Content-Type":"application/json"
+       },
+       })
+      
+       const data=await res.json();
+       append(data);
+    console.log(data)}
+        catch(err){
+            console.log(err)
+        }
+    }
+
+    function append(data){
+        let output=document.querySelector('#output')
+        output.innerHTML=""
+
+        let para=document.createElement("h1")
+        para.innerText=data.translatedText
+        para.addEventListener("click",function(){
+            window.location.reload()
+        })
+        output.append(para)
+
+    }
+
+    
+    function debounce(func,delay)
+    {
+        if(id){
+            clearTimeout(id)
+        }
+        id=setTimeout(function(){
+            translate()
+        },delay)
+    }
+</script>

@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          #navbar{
+    display: flex;
+    justify-content: space-between;
+    background-color: teal;
+    align-items: center;
+    height: 80px;
+    gap: 10px;
+}
+#contai{
+    display: flex;
+    gap: 20px;
+    font-size: 22px;
+    color: white;
+    margin-right: 20px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+        padding: 20px 40px;
+        
+        }
+        #box{
+            width: 300px;
+            height: 350px;
+        }
+        img{
+            width: 100%;
+            height: 80%;
+        }
+        #hot{
+            margin-left: 20px;
+            font-size: 28px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div id="hot"><a href="index.html"><h2>Hotstar</h2></a></div>
+        <div id="contai">
+            
+            <div><a href="rending.html" >Trending</a></div>
+            <div>Login</div>
+            <div>Signup</div>
+          </div> 
+    </div>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+  const url=""
+    fetch(url)
+    .then(function (res){
+        
+        return res.json();
+    })
+    .then(function (res){
+    append(res.results)
+        console.log(res.results)
+    })
+    .catch(function(err){
+        console.log(err);
+    })
+
+    function append(data)
+    {
+        data.map(function(elem){
+        let box=document.createElement("div")
+        box.setAttribute("id","box")
+
+    let image=document.createElement("img")
+    image.src=`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${elem.poster_path}`;
+
+    let name=document.createElement("h3")
+    name.innerText=elem.title
+
+    
+
+    box.append(image,name)
+    document.querySelector("#container").append(box)
+    })  
+    }
+</script>

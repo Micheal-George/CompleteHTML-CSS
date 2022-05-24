@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2a05cd7cd7.js" crossorigin="anonymous"></script>
+    <title>Fasonz</title>
+    
+</head>
+<style>
+#container
+{
+    margin: 10px 0px;
+    padding: 20px 10px;
+    display: flex;
+    background-color: teal;
+    justify-content: space-around;
+}
+#main{
+    display: grid;
+    grid-template-columns: repeat(1,900px);
+    grid-template-rows: 300px;
+    gap: 20px;
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+#box
+{
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+
+}
+img{
+    height: 250px;
+    width: 200px;
+}
+h3{
+    display: block;
+    font-size: 28px;
+    margin-left: 50px;
+}
+#box2{
+    display: flex;
+    
+}
+p{
+    margin-left: 150px;
+    display: block;
+   margin-top: 35px;
+    font-size: 18px;
+    text-decoration: line-through;
+}
+#sbox{
+    display: grid;
+    align-content: space-around;
+}
+
+button{
+    display: block;
+    padding: 10px 40px;
+    height: 40px;
+    width: 150px;
+   background-color:#ffd814 ;
+    margin-left: 50px;
+    border: none;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+}
+#cart{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+#sub{
+    border: 1px solid black;
+    height: 450px;
+    width: 25%;
+    margin-top: 100px;
+    padding: 20px 10px;
+    
+}
+.total1,.total2,.total3,.total4{
+    display: flex;
+    justify-content: space-between;
+}
+h4{
+    display: block;
+}
+#placeorder
+{
+    width: 70%;
+    background-color: rgb(245, 39, 39);
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 17px;
+}
+.pay{
+    font-size: 25px;
+}
+input{
+    height: 15px;
+    margin-top: 19px;
+}
+#apply{
+    height: 20px;
+    width: 170px;
+    padding: 0;
+    margin-left: 210px;
+    margin-top: -30px;
+    border-radius: 0px;
+    cursor: pointer;
+    background-color:rgb(245, 39, 39);
+    color: white; 
+}
+</style>
+<body>
+    <div id="container">
+        <div><a  href="index.html">HOME</a> </div>
+    <div><a  href="men.html">MEN</a> </div>
+    <div><a  href="women.html">WOMEN</a></div>
+    <div><a  href="signup.html">SIGNUP</a></div>
+    <div><a  href="login.html">LOGIN</a></div>
+    <div><a  href="cart.html">CART<i class="fa-solid fa-cart-shopping"></i></a></div>
+    </div>
+    <div id="cart">
+        <div id="main">
+        </div>
+        <div id="sub">
+            <h2 id="heading"></h2>
+            <div class="total1"></div>
+            <div class="total2"></div>
+            <div class="total4">
+                <h4>COUPON CODE</h4>
+                <input type="text" placeholder="Enter COUPON CODE">
+                 </div>
+                 <div>
+                     <h1></h1>
+                     <button id="apply">Apply</button>
+                 </div>
+            <div class="total3"></div>
+        </div>
+    </div>
+   
+</body>
+</html>
+<script>
+ var cartItem=JSON.parse(localStorage.getItem("cart"))
+ if(cartItem==null||cartItem=="")
+ {
+     var para=document.createElement("h1")
+     para.innerText="Cart Is Empty"
+     para.style.color="red"
+     document.querySelector("#main").append(para)
+     
+ }
+var Disc=0;
+
+ var number=document.querySelector("#heading")
+  number.innerText="PRICE DETAILS ( "+cartItem.length+" items )";
+ 
+
+ var Total = cartItem.reduce(function (sum, elem, index, arr) {
+    return sum + Number(elem.price);
+  }, 0);
+
+
+var MRP = cartItem.reduce(function (sum, elem, index, arr) {
+    return sum + Number(elem.strikedOffPrice);
+  }, 0); 
+ 
+  var Discount = cartItem.reduce(function (sum, elem, index, arr) {
+    return sum + Number(elem.strikedOffPrice)-Number(elem.price);
+  }, 0);
+
+ var totalmrp=document.createElement("h4")
+  totalmrp.innerText="Total MRP";
+  var totalMRP=document.createElement("h4")
+  totalMRP.innerText="₹"+MRP;
+  document.querySelector(".total1").append(totalmrp,totalMRP)
+
+var total2=document.querySelector(".total2")
+ var totaldis=document.createElement("h4")
+ totaldis.innerText="DISCOUNT on MRP";
+  var totalDIS=document.createElement("h4")
+  totalDIS.innerText="-₹"+Discount;
+  totalDIS.style.color="green"
+total2.append(totaldis,totalDIS)
+
+var code=document.querySelector("#apply")
+code.addEventListener("click",cop)
+var total3=document.querySelector(".total3")
+ var totalpay=document.createElement("h4")
+ totalpay.setAttribute("class","pay")
+ totalpay.innerText="Amount to pay";
+  var totalPAY=document.createElement("h4")
+  totalPAY.setAttribute("class","pay")
+  totalPAY.innerText="₹"+Total;
+total3.append(totalpay,totalPAY)
+
+
+
+ var btn1=document.createElement("button")
+  btn1.innerText="Proceed to BUY "
+  btn1.setAttribute("id","placeorder")
+  btn1.addEventListener("click",paymentfun)
+  document.querySelector("#sub").append(btn1)
+
+ cartItem.map(function(elem,index)
+ {
+    var box=document.createElement("div")
+        box.setAttribute("id","box")
+    var sbox=document.createElement("div")
+        sbox.setAttribute("id","sbox")
+    var box2=document.createElement("div")
+        box2.setAttribute("id","box2")   
+
+
+        var image=document.createElement("img")
+        image.src=elem.image_URL;
+        image.setAttribute("class","image")
+
+        var itemname=document.createElement("h2")
+        itemname.innerText=elem.iteamName
+
+        var itemprice=document.createElement("h3")
+        itemprice.innerText=elem.price
+
+        var strikedOffPrice=document.createElement("p")
+        strikedOffPrice.innerText=elem.strikedOffPrice
+
+        box2.append(itemprice,strikedOffPrice)
+
+        var btn=document.createElement("button")
+        btn.innerText="Remove"
+        btn.addEventListener("click",function(){
+            removeElement(elem,index)
+        })
+
+        sbox.append(itemname,box2,btn)
+        box.append(image,sbox);
+        document.querySelector("#main").append(box)   
+ })
+
+function  removeElement(elem,index)
+{
+    console.log(elem,index)
+    cartItem.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cartItem));
+    window.location.reload();
+}
+
+// coupon function
+function cop(){
+    var COUPON=document.querySelector("input").value
+ if(COUPON=="masai30")
+ {
+     var total=Math.ceil(Total*.70);
+    totalPAY.innerText="₹"+total
+    discount=Total-total+Discount
+total3.append(totalpay,totalPAY)
+code.innerText="Coupon Applied"
+code.style.color="white"
+code.style.backgroundcolor="green"
+totalDIS.innerText="-₹"+discount
+  totalDIS.style.color="green"
+total2.append(totaldis,totalDIS)
+localStorage.setItem("discount",discount)
+localStorage.setItem("Amount",total)
+ }
+ else{
+    code.innerText="Wrong Code" 
+    totalDIS.innerText="-₹"+Discount
+  totalDIS.style.color="green"
+total2.append(totaldis,totalDIS)
+totalPAY.innerText="₹"+Total
+total3.append(totalpay,totalPAY)
+ }
+}
+localStorage.setItem("Amount",Total)
+localStorage.setItem("length",cartItem.length)
+localStorage.setItem("MRP",MRP)
+localStorage.setItem("discount",Discount)
+
+function paymentfun(){
+    window.location.href="payment.html"
+}
+
+</script>

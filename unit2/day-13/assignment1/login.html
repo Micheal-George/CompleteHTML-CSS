@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/2a05cd7cd7.js" crossorigin="anonymous"></script>
+
+</head>
+<style>
+    body{
+       background-color: #fdefea;
+    }
+#main{
+    display: flex;
+    padding: 50px 80px;
+    align-content: space-around;
+    height: 350px;
+    width: 280px;
+    margin: 5% auto;
+    background-color: white;
+    border: 0px solid black;
+}
+input{
+    height: 25px;
+    width: 250px;
+    font-size: 17px;
+}
+#container
+{
+    margin-top: 10px;
+    padding: 20px 10px;
+    display: flex;
+    background-color: teal;
+    justify-content: space-around;
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+#btn{
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    width: 200px;
+    font-size: 17px;
+    height: 35px;
+    font-weight: 550;
+    color: white;
+    background-color: #ff3f6c;
+    border: none;
+}
+p{
+    font-size:20px ;
+    font-family: sans-serif;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+    </style>
+    <body>
+        <div id="container">
+            <div><a  href="index.html">HOME</a> </div>
+            <div><a  href="men.html">MEN</a> </div>
+            <div><a  href="women.html">WOMEN</a></div>
+            <div><a  href="signup.html">SIGNUP</a></div>
+            <div><a  href="login.html">LOGIN</a></div>
+            <div><a  href="cart.html">CART<i class="fa-solid fa-cart-shopping"></i></a></div>
+            </div>
+        <div id="main">
+            <form action="">
+                <p>Enter the Email</p>
+                <input id="email" type="email" placeholder="Enter Email">
+                <br>
+                <p>Enter Mobile Number</p>
+                <input id="num" type="number" placeholder="Enter Mobile Number">
+                <br>
+                <p>Enter Password</p>
+                <input id="pass" type="password" placeholder="Enter Password">
+                <br>
+                <input id="btn" type="submit" value="LOGIN">
+            </form>
+    </div>
+    </body>
+    </html>
+    <script>
+        var Dataentry=JSON.parse(localStorage.getItem("Data"))
+
+        document.querySelector("form").addEventListener("submit",data)
+        function data()
+        {
+            event.preventDefault()
+        var email=document.querySelector("#email").value
+        var num=document.querySelector("#num").value
+        var pass=document.querySelector("#pass").value
+            var count=0;
+        for(var i=0;i<Dataentry.length;i++)
+        {
+           
+            if((Dataentry[i].Email==email)&&(Dataentry[i].Num==num)&&(Dataentry[i].Pass==pass))
+            {
+                count++;
+                break
+            }
+           
+        }
+        if(count>0)
+        {
+                alert("Login Successfull")
+                
+            }
+            else{
+                alert("Login Failed")
+            }
+    }
+    </script>

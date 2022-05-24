@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    #winner{
+        border: 1px solid black;
+        height: 250px;
+        width: 250px;
+        margin: auto;
+    }
+
+#container{
+     display: grid;
+   grid-template-columns: repeat(3,200px);
+   grid-template-rows: 200px;
+   justify-content: space-around;
+   padding: 0px 300px;
+    }
+    #container>div{
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 50px;
+        font-weight: bold;
+       
+    } 
+    button{
+        display: block;
+        margin: 3% auto;
+        font-size: 20px;
+        padding: 8px 50px;
+        background-color: green;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    #winner>h2{
+        text-align: center;
+    }
+    #winner>h1{
+        text-align: center;
+        font-size: 70px;
+        font-weight: bolder;
+    }
+
+</style>
+
+
+
+
+<body>
+    <div id="winner">
+        <h2>WINNER  IS</h2>
+        <h1 id="details"></h1>
+    </div>
+    <button onclick="roll()" id="roll">ROLL THE DICE</button>
+    <div id="container">
+        <div id="member-1">2</div>
+        <div id="member-2">5</div>
+        <div id="member-3">4</div>
+    </div>
+  
+</body>
+</html>
+
+<script>
+
+
+function roll()
+{
+let div1=Math.floor(Math.random()*6+1)
+let div2=Math.floor(Math.random()*6+1)
+let div3=Math.floor(Math.random()*6+1)
+
+let winner=document.querySelector("#details")
+
+let mem1=document.querySelector("#member-1")
+let mem2=document.querySelector("#member-2")
+let mem3=document.querySelector("#member-3")
+
+mem1.style.backgroundColor="white" 
+mem2.style.backgroundColor="white" 
+mem3.style.backgroundColor="white" 
+
+
+winner.innerHTML="";
+
+mem1.innerHTML=div1
+mem2.innerHTML=div2
+mem3.innerHTML=div3
+
+ if(div1>div2&&div1>div3) 
+    {       mem1.style.backgroundColor="green"   ; 
+     winner.innerHTML="A" ; 
+      if(div1>div2&&div1>div3&&div2>div3)   
+       {       mem2.style.backgroundColor="yellow"  
+        ; mem3.style.backgroundColor="red" }
+        else{
+            mem3.style.backgroundColor="yellow"  
+        ; mem2.style.backgroundColor="red" 
+        }
+        
+
+ }
+
+  if(div2>div1&&div2>div3)  
+    {    
+     mem2.style.backgroundColor="green"  ;    winner.innerHTML="B" ;
+        if(div2>div1&&div1>div3&&div2>div3)    {       mem1.style.backgroundColor="yellow"   ;mem3.style.backgroundColor="red"  }
+        else{   mem3.style.backgroundColor="yellow"   ;mem1.style.backgroundColor="red"   }
+      
+
+    }
+
+ if(div3>div1&&div3>div2)    
+  {      mem3.style.backgroundColor="green"  ;     winner.innerHTML="C" ; 
+  if(div3>div2&&div3>div1&&div2>div1)    {       mem2.style.backgroundColor="yellow"   ;   mem1.style.backgroundColor="red"}
+   else{    mem1.style.backgroundColor="yellow"   ;   mem2.style.backgroundColor="red"  }
+  
+
+ }
+ if(div3==div2)  { mem3.style.backgroundColor="blue"   ;   mem2.style.backgroundColor="blue"   ;  
+if(div3>div1) {  mem1.style.backgroundColor="red" }  else {  mem1.style.backgroundColor="green"}
+}
+ if(div1==div3)  { mem1.style.backgroundColor="blue"   ;   mem3.style.backgroundColor="blue"   ;  
+ if(div3>div2) {  mem2.style.backgroundColor="red" }  else {  mem2.style.backgroundColor="green"}
+}
+ if(div1==div2)  { mem1.style.backgroundColor="blue"   ;   mem2.style.backgroundColor="blue"  ;
+ if(div1>div3) {  mem3.style.backgroundColor="red" }  else {  mem3.style.backgroundColor="green"}
+}
+ if(div1==div3&&div1==div2)  { mem1.style.backgroundColor="blue"   ;   mem3.style.backgroundColor="blue"   ;   mem2.style.backgroundColor="blue"}
+}
+
+
+
+
+</script>

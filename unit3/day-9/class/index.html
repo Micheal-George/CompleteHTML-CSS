@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/2a05cd7cd7.js" crossorigin="anonymous"></script>
+    <style>
+        #show_videos{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: auto;
+            gap: 5%;
+            padding: 2% 5%;
+        }
+        #navbar{
+            height: 2%;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #icon{
+            height: 50%;
+            width: 10%;
+        }
+        #searchicon{
+        height: 100%;
+           
+        }
+        #search{
+            height: 30px;
+            width: 35%;
+            display: flex;
+          
+            align-items: center;
+            gap: 2%;
+            box-sizing: border-box;
+        }
+        button{
+            height: 115%;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+        }
+        input{
+            height: 100%;
+            width: 80%;
+            font-size:large;
+        }
+        i{
+            font-size: x-large;
+        }
+        #icons{
+            height: 30px;
+            gap: 20%;
+            display: flex;
+            margin-right: 2%;
+        }
+        #icons>img{
+            height: 100%;
+            border-radius: 40%;
+            
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <img src="https://i.insider.com/59a59a8d79bbfd1d008b601a?width=1200&format=jpeg" alt="" id="icon">
+        <div id="search">
+            <input type="text" id="query" placeholder="Search">
+            <button  onclick="searchVideos()"><img id="searchicon" src="https://cdn1.iconfinder.com/data/icons/thin-ui-1/100/Noun_Project_100Icon_1px_grid_thin_ic_cookie-512.png" alt=""></i></button>
+           <div><i class="fa-solid fa-microphone"></i></div> 
+        </div>
+            
+            <div id="icons">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Video_camera_icon.svg/1200px-Video_camera_icon.svg.png" alt="">
+               <img id="bell" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu1hM0niFu0yXsk7h6njbGb6XRBWMAQ7sU2A&usqp=CAU" alt="">
+            </div>
+    </div>
+    
+    <div id="show_videos"></div>
+</body>
+</html>
+
+<script>
+
+
+
+
+  const showmyVideos=async ()=> {
+        try{
+            const res =await fetch(  'https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=IN&key=AIzaSyA27F0c4CX_rmfYpv8ybPjF5Z7lEDFeA3A')
+          const data=await res.json();
+         console.log(data.items)
+        }
+                                                                                                                                                                                                                                                                    
+        catch(err){
+            console.log(err)
+        }
+    }
+    showmyVideos()
+   
+    const searchVideos=async ()=> {
+        try{
+            const q=document.querySelector("#query").value
+            const res =await fetch(` https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&q=${q}&videoDuration=any&key=AIzaSyA27F0c4CX_rmfYpv8ybPjF5Z7lEDFeA3A`)
+          const data=await res.json();
+          console.log(data.items)
+          append(data.items)
+        }
+                                                                                                                                                                                                                                                                    
+        catch(err){
+            console.log(err)
+        }
+    }
+    const append= (videos)=>{
+        let show_videos=document.querySelector("#show_videos")
+        show_videos.innerHTML=null;
+
+        videos.forEach(({id:{videoId},snippet:{title}})=>{
+            let div=document.createElement("div")
+            let iframe=document.createElement("iframe")
+            iframe.src=`https://www.youtube.com/embed/${videoId}`
+            iframe.width="100%"
+            iframe.height="100%"
+            iframe.allow="fullscreen"
+
+            let data={
+                title,
+                videoId,
+            };
+
+            let name=document.createElement("h3")
+            name.innerText=title;
+            div.onclick=()=>{
+                showVideos(data)
+            }
+
+            div.append(iframe,name)
+            show_videos.append(div)
+        })
+    }
+    let arr=[]
+    const showVideos=(x)=>{
+        arr.push(x)
+        localStorage.setItem("video",JSON.stringify(arr))
+        window.location.href="video.html"
+       console.log(arr)
+       
+    }
+</script>

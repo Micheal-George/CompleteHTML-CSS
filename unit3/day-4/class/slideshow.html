@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="start" onclick="startS()">START</button>
+    <button id="stop" onclick="stopShow()">STOP</button>
+    <div id="show"></div>
+</body>
+</html>
+
+<script>
+
+var data=JSON.parse(localStorage.getItem("images"))
+let i=0;
+let iShow
+function startS(){
+    let image=document.createElement("img")
+    iShow= setInterval(function()
+    {
+        if(i===data.length)
+        {
+            i=0;
+        }
+        image.src=data[i];
+        i++;
+        document.querySelector("#show").innerHTML=null
+        document.querySelector("#show").append(image)
+    },2000) ;
+}
+function stopShow()
+    {
+        clearInterval(iShow)
+      
+    }
+</script>

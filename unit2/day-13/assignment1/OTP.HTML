@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     body{
+       background-color: #fdefea;
+    }
+    div{
+       width: 300px;
+       height: 200px;
+        
+        background-color: white;
+        margin: 10% auto;
+        padding: 20px;
+    }
+    input{
+        display: block;
+        height: 25px;
+        width: 150px;
+        margin:5% auto;
+    }
+    button{
+        display: block;
+        background-color: #00baf2;
+        color: white;
+        height: 33px;
+        width: 160px;
+        margin:  auto;
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: 550;
+        border: none;
+    }
+    
+</style>
+<body>
+    <div>
+        <input type="number" placeholder="Enter OTP">
+        <button>Verify</button>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector("button").addEventListener("click",myFun)
+    function myFun()
+    {
+        var select=document.querySelector("input").value
+        if(select=="1234")
+        {
+            alert("Payment Successfull")
+            alert("Order Placed Successfully")
+            window.location.href="index.html"
+        }
+        else{
+            alert("incorrect OTP")
+        }
+    }
+</script>

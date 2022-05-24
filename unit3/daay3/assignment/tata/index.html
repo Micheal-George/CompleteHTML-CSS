@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+   function TATA(n)
+    {
+       this.engine=n;
+       this.power_steering="Yes";
+       this.power_window="Yes"
+    }
+
+    // TATA.prototype.coupon=function()
+    // {
+    //     console.log("20%")
+    // }
+    var x= new TATA("Turbo petrol");
+    var Altroz=Object.create(x)
+    Altroz.mileage="20KMPL"
+    var Nexon=Object.create(x)
+    Nexon.mileage="23KMPL"
+    Nexon.disc_brake="Yes";
+    
+    console.log("ALTROZ:",Altroz)
+console.log("NEXON:",Nexon)
+// Nexon.coupon()
+
+</script>

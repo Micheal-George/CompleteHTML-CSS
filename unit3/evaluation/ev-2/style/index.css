@@ -1,0 +1,49 @@
+#navbar{
+    display: flex;
+    justify-content: flex-end;
+    background-color: teal;
+    align-items: center;
+    height: 80px;
+    gap: 10px;
+}
+#container{
+    display: flex;
+    gap: 20px;
+    font-size: 22px;
+    color: white;
+}
+#item_count{
+    
+    font-size: 22px;
+    color: white;
+    margin-right: 20px;
+}
+
+#items{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 50px;
+    margin: 10px 100px;
+}
+#box{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: 450px;
+}
+img{
+    height: 70%;
+    width: 100%;
+}
+h3{
+    text-align: center;
+}
+#add_to_cart{
+    display: block;
+    margin:-2% auto;
+    cursor: pointer;
+    padding: 5px 20px;
+   font-size: 17px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/2a05cd7cd7.js" crossorigin="anonymous"></script>
+
+</head>
+<style>
+    #container
+    {
+    margin-top: 10px;
+    padding: 20px 10px;
+    display: flex;
+    background-color: teal;
+    justify-content: space-around;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+h1{
+    text-align: center;
+    color:blue;
+    margin-top: 0px;
+}
+#main{
+    width: 90%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: auto;
+    margin:  auto;
+    gap: 25px;   
+    
+}
+.image{
+    height: 250px;
+    width: 100%;
+}
+#box{
+border: 0px solid black;
+padding: 10px;
+display: grid;
+align-content: space-between;
+box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+#box2{
+    margin-top: -20px;
+    display: flex;
+    justify-content: space-around;
+    border: 0px solid black;
+}
+h2{
+    text-align: center;
+}
+h3{ 
+    font-size: 28px;
+}
+p{
+   margin-top: 35px;
+    font-size: 18px;
+    text-decoration: line-through;
+}
+button{
+    display: block;
+    padding: 10px 40px;
+    margin: auto;
+    margin-top: auto;
+    /* background-color: ; */
+    border: none;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+}
+select{
+    width: 150px;
+    margin:10px;
+    height: 25px;
+    font-family: sans-serif;
+    font-weight: 550;
+    background-color: #fdefea;
+}
+
+</style>
+<body>
+   
+    <div id="container">
+        <div><a  href="index.html">HOME</a> </div>
+        <div><a  href="men.html">MEN</a> </div>
+        <div><a  href="women.html">WOMEN</a></div>
+        <div><a  href="signup.html">SIGNUP</a></div>
+        <div><a  href="login.html">LOGIN</a></div>
+        <div><a  href="cart.html">CART<i class="fa-solid fa-cart-shopping"></i></a></div>
+        </div>
+        <select name="" id="sortbyNames" onchange="SortbyNames()">
+            <option value="">Sort by Names</option>
+            <option value="Ascending">Ascending</option>
+            <option value="Descending">Descending</option>
+        </select>
+        <select name="" id="sortbyPrice" onchange="SortbyPrice()">
+            <option value="">Sort By Price</option>
+            <option value="HtL">High To Low</option>
+            <option value="LtH">Low To High</option>
+        </select>
+    <h1>Welcome to MEN'S page</h1>
+    
+    <div id="main"></div>
+    
+</body>
+</html>
+
+<script>
+    var itemData=[{
+        image_URL:"https://images-eu.ssl-images-amazon.com/images/I/31IHcrFMPCS._AC_SX184_.jpg",
+        iteamName:"Van Heusen Men's Solid Regular Fit Polo",
+        price:"379.00",
+        strikedOffPrice:"899.00",
+    },
+    {
+        image_URL:"https://m.media-amazon.com/images/I/81mbrpJ-w7L._AC_UL480_FMwebp_QL65_.jpg",
+        iteamName:"U.S. POLO ASSN. Men's Slim Shirt",
+        price:"1078.00",
+        strikedOffPrice:"2199.00",
+    },
+    {
+        image_URL:"https://m.media-amazon.com/images/I/713LAefIS3S._UX569_.jpg",
+        iteamName:"U.S. POLO ASSN. Men's Regular  Shirt",
+        price:"789.00",
+        strikedOffPrice:"1780.00",
+    },
+    {
+        image_URL:"https://m.media-amazon.com/images/I/811jajeMo6L._UX569_.jpg",
+        iteamName:"Cherokee by Unlimited Men's  Jeans",
+        price:"889.00",
+        strikedOffPrice:"1789.00",
+    },
+    {
+        image_URL:"https://m.media-amazon.com/images/I/51Ll1fozIHL._AC_UL480_FMwebp_QL65_.jpg",
+        iteamName:"Jack & Jones Mens 5 Pocket  Jeans",
+        price:"889.00",
+        strikedOffPrice:"1889.00",
+    },
+    
+    {
+        image_URL:"https://m.media-amazon.com/images/I/51sx+HbErlL._UX569_.jpg",
+        iteamName:"MANQ Men's Slim Fit  Blazer" ,
+        price:"1289.00",
+        strikedOffPrice:"2460.00",
+    },
+    {
+        image_URL:"https://m.media-amazon.com/images/I/51SYUCJAWKL._UX679_.jpg" ,
+        iteamName:"MANQ Men's Solid Waistcoat" ,
+        price:"989.00",
+        strikedOffPrice:"1460.00",
+    },
+    {
+        image_URL:"https://m.media-amazon.com/images/I/71zSuS9E2ML._UX569_.jpg",
+        iteamName:"Integriti Men Sweatshirt" ,
+        price:"329.00",
+        strikedOffPrice:"560.00",
+    },
+    {
+        image_URL:"https://m.media-amazon.com/images/I/71mcY2boNVL._UX679_.jpg",
+        iteamName:"ALAMOS Combo Pack of 2 edixo Cap",
+        price:"289.00",
+        strikedOffPrice:"460.00",
+    },
+    {
+        image_URL:"https://m.media-amazon.com/images/I/41HtkZQyDAL.jpg ",
+        iteamName:"ZORO Men's PU Leather Black Belt ",
+        price:"279.00",
+        strikedOffPrice:"589.00",
+    },
+    {
+        image_URL:"https://m.media-amazon.com/images/I/515eaPvFcgL._UX679_.jpg" ,
+        iteamName:"FASTTRACK Men's Sunglasses",
+        price:"559.00",
+        strikedOffPrice:"880.00",
+    },
+    {
+        image_URL: "https://m.media-amazon.com/images/I/515gKnUgwpL._UX679_.jpg",
+        iteamName:"ELEGANTE Men's Square Sunglasses" ,
+        price:"279.00",
+        strikedOffPrice:"460.00",
+    },
+   
+    {
+        image_URL:"https://m.media-amazon.com/images/I/51LLumdPKGL._UY695_.jpg",
+        iteamName:"REGAL Men's Leather Loafer",
+        price:"2329",
+        strikedOffPrice:"3560",
+    },
+    {
+        image_URL:"https://m.media-amazon.com/images/I/815HX+m-8TL._UX695_.jpg",
+        iteamName:"Naturalizer Jac",
+        price:"1529.00",
+        strikedOffPrice:"2560.00",
+    },
+    {
+        image_URL:"https://m.media-amazon.com/images/I/61uLmxPmPaL._UY695_.jpg",
+        iteamName:"Nike Men's Flex",
+        price:"3299.00",
+        strikedOffPrice:"5450.00",
+    },
+    {
+        image_URL:"https://m.media-amazon.com/images/I/710UEUAQImL._UY695_.jpg",
+        iteamName:"Nike Men's Loyal Black Chrome",
+        price:"759.00",
+        strikedOffPrice:"1240.00",
+    }
+    ];
+
+    var cartData=JSON.parse(localStorage.getItem("cart"))||[]
+    display(itemData)
+   function cartdetails(elem,btn)
+   {
+   btn.innerText="Added To Cart";
+   btn.style.backgroundColor="green";
+   btn.style.color="white";
+      cartData.push(elem)
+      localStorage.setItem("cart",JSON.stringify(cartData))
+      
+      
+   }
+  
+  function SortbyNames(){
+      
+      var selectName=document.querySelector("#sortbyNames").value
+      if(selectName=="Ascending")
+      {
+          itemData.sort(function(a,b){
+              var A=a.iteamName.toLowerCase()
+              var B=b.iteamName.toLowerCase()
+              if(A<B) return -1
+              if(A>B) return 1
+              return 0
+          }) 
+      } 
+      if(selectName=="Descending")
+      {
+          itemData.sort(function(a,b){
+              var A=a.iteamName.toLowerCase()
+              var B=b.iteamName.toLowerCase()
+              if(A>B) return -1
+              if(A<B) return 1
+              return 0
+          }) 
+      } 
+      display(itemData) 
+  }
+
+  function SortbyPrice(){
+        var selectPrice=document.querySelector("#sortbyPrice").value
+        if(selectPrice=="LtH")
+        {
+            itemData.sort(function(a,b)
+            {
+                return a.price-b.price
+            })
+        }
+        if(selectPrice=="HtL")
+        {
+            itemData.sort(function(a,b)
+            {
+                return b.price-a.price
+            })
+        }
+        display(itemData) 
+  }
+
+  function display(cartData)
+  {
+    document.querySelector("#main").innerHTML=""
+    itemData.map(function(elem){
+       
+        var box=document.createElement("div")
+        box.setAttribute("id","box")
+        
+       
+        var image=document.createElement("img")
+        var itemname=document.createElement("h2")
+
+        var box2=document.createElement("div")
+        box2.setAttribute("id","box2")
+        var itemprice=document.createElement("h3")
+        var strikedOffPrice=document.createElement("p")
+        box2.append(itemprice,strikedOffPrice)
+
+        var btn=document.createElement("button")
+        btn.innerText="Add To Cart";
+        btn.style.backgroundColor="#ffd814"
+        btn.addEventListener("click",function(){
+            cartdetails(elem,btn)
+        })
+       
+
+        itemname.innerText=elem.iteamName
+        itemprice.innerText=elem.price
+        strikedOffPrice.innerText=elem.strikedOffPrice
+        
+        image.src=elem.image_URL;
+        image.setAttribute("class","image")
+        box.append(image,itemname,box2,btn);
+
+        
+        document.querySelector("#main").append(box)
+    })
+  }
+  
+</script>

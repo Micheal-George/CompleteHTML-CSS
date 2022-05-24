@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #navbar
+        {
+            height: 70px;
+            width: 100%;
+            background-color: teal;
+            margin-top: 10px;
+            display: flex;
+            justify-content:flex-end;
+        }
+        #main{
+            width: 800px;
+            height: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-content: center;
+        }
+        h3{
+            display: inline;
+            font-size: 22px;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+        }
+        #backimg{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        #container{
+            height: 700px;
+        }
+        #screen
+        {
+            height: 70%;
+            width: 88.9%;
+           background-color: black;
+           position: relative;
+           top: 6%;
+           left: 6.3%;
+           border-radius: 30px;
+           
+        }
+        #cinema{
+            height: 100%;
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        #grid{
+            padding:100px 40px;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+        }
+        #box{
+            height: 600px;
+        }
+        #img1{
+            width: 100%;
+            height: 70%;
+        }
+        #select{
+            margin-left: 50px;
+            margin-top: 60px;
+            width: 200px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div id="main">
+            <h3><a href="index.html">HOME</a></h3>
+           <h3><a href="login.html"> LOGIN</a></h3>
+           <h3> <a href="signup.html">SIGNUP</a></h3>
+        </div>
+    </div>
+    <div id="container">
+        <img id="backimg" src="https://media.slidesgo.com/storage/45821/responsive-images/x4a_bgu7y0PUFST7XOxMAF6Vhqoc-AG87WxriyDeWe2KCFFt2VNUHztplG1hOygunrF3rIlOzLvmzvgbPyAN2kzuApYnzdL7WfLgwgT-bwMHOeLtYjETyyFHe2qqxM-vmw-Xybf9a7EHI_HcpGPOVMnrtlAGuXLrqcZQBbXv773gw1KC9pamGWxeShyE6LimYaA2FA%3Ds1600___media_library_original_1600_900.jpg" alt="">
+          <div id="screen"></div>
+    </div>
+    <div id="select">
+        <button id="sort-lh" onclick="Imbd()">Sort by low rating to high</button>
+        <button id="sort-hl" onclick="Imbd1()"> Sort by High rating to low</button>
+    </div>
+   
+    <div id="grid"></div>
+</body>
+</html>
+
+<script>
+   var data=[
+   {
+       URL:"https://4kwallpapers.com/images/walls/thumbs_2t/7770.jpg",
+   },
+   {
+       URL:"https://4kwallpapers.com/images/walls/thumbs_2t/7752.jpg",
+   },
+   {
+         URL:"https://4kwallpapers.com/images/walls/thumbs_2t/7773.jpg",
+   },
+   {
+         URL:"https://4kwallpapers.com/images/walls/thumbs_2t/7676.jpg",
+   },
+   {
+       URL:"https://4kwallpapers.com/images/walls/thumbs_2t/103.jpg",
+   },
+   {
+       URL:"https://4kwallpapers.com/images/walls/thumbs_2t/7189.jpg",
+   },
+   {
+       URL:"https://4kwallpapers.com/images/walls/thumbs_2t/7768.jpg",
+   },
+   
+]
+ 
+
+var movie=[{
+    date: "2022-04-13",
+image: "https://www.pinkvilla.com/imageresize/thalapahy_65_is_titled_beast.jpg?width=752&format=webp&t=pvorg",
+name: "Beast",
+rating: "8",
+},
+{
+    date: "2022-03-25",
+image: "https://upload.wikimedia.org/wikipedia/en/7/75/Pushpa_-_The_Rise_%282021_film%29.jpg",
+name: "Pushpa",
+rating: "9",
+},
+{
+    date: "2022-04-14",
+image: "https://cdn.gulte.com/wp-content/uploads/2022/04/the-battleground-looks-set-its-going-to-be-intense-trailer-of-kgf-chapter-2-to-be-launched-on-27th-march-at-6-40-pm-001.jpg",
+name: "KGF 2",
+rating: "9.5",
+},
+{
+    date: "2022-02-25",
+image: "https://m.media-amazon.com/images/M/MV5BNmZkMGEwN2EtN2Q1Mi00NWU4LWI2OWUtMDdjOGNmZTAyOWFkXkEyXkFqcGdeQXVyMTEwMzc3OTkw._V1_FMjpg_UX1000_.jpg",
+name: "Marakar",
+rating: "7.5",
+},
+{
+    date: "2022-03-31",
+image: "https://upload.wikimedia.org/wikipedia/en/e/eb/Bheeshma.Parvam.jpg",
+name: "Bheeshma Parva",
+rating: "7.5",
+},
+{
+    date: "2022-03-01",
+    image: "https://cdn.123telugu.com/content/wp-content/uploads/2022/03/ET1.jpg",
+    name: "ET",
+rating: "8.5",
+},
+{
+    date: "2022-03-28",
+image: "https://www.boxofficemovies.in/now/wp-content/uploads/South-Superstar-Thala-Ajith-Kumar-upcoming-Action-movie-Valmai.jpg",
+name: "Valmai",
+rating: "7",
+},
+{
+    date: "2022-09-09",
+image: "https://cdn.lifestyleasia.com/wp-content/uploads/sites/7/2022/01/05172038/MV5BZjY2MmI1ZWItNmU0Yy00NTdkLWJiYmQtNzFlZWNlMzkxZTZjXkEyXkFqcGdeQXVyNjkwOTg4MTA%40._V1_.jpg",
+name: "Bhramastra",
+rating: "0",
+},
+{
+    date: "2022-03-10",
+image: "https://assets.gadgets360cdn.com/pricee/assets/product/202105/Radhe-Shyam-250_1621446079.jpg",
+name: "Radhe Shyam",
+rating: "5",
+}
+]
+let i=0;
+let iShow
+function startS(){
+    let image=document.createElement("img")
+    image.setAttribute("id","cinema")
+    iShow= setInterval(function()
+    {
+        if(i===data.length)
+        {
+            i=0;
+        }
+        image.src=data[i].URL;
+        i++;
+        document.querySelector("#screen").innerHTML=null
+        document.querySelector("#screen").append(image)
+    },2000) ;
+}
+
+startS()
+
+
+
+display(movie)
+
+function Imbd(){
+        let imbdrating=document.querySelector("#sort-lh").innerText
+        console.log(imbdrating)
+        if(imbdrating=="Sort by low rating to high")
+        {
+            movie.sort(function(a,b)
+            {
+                return a.rating-b.rating
+            })
+        }
+        display(movie) 
+  }
+  function Imbd1(){
+    let imbdrating1=document.querySelector("#sort-hl").innerText
+    if(imbdrating1=="Sort by High rating to low")
+        {
+            movie.sort(function(a,b)
+            {
+                return b.rating-a.rating
+            })
+        }
+        display(movie) 
+  }
+
+function display(movie)
+{
+    document.querySelector("#grid").innerHTML=""
+movie.map(function(elem){
+    
+    let box=document.createElement("div")
+    box.setAttribute("id","box")
+
+    let image=document.createElement("img")
+    image.src=elem.image
+    image.setAttribute("id","img1")
+
+    let Name=document.createElement("h3")
+    Name.innerText=elem.name
+
+    let date=document.createElement("h5")
+    date.innerText="Releasing Date : "+elem.date
+
+    let imbd=document.createElement("h5")
+    imbd.innerText="IMBD : "+elem.rating
+
+    box.append(image,Name,date,imbd)
+    document.querySelector("#grid").append(box)
+    
+})}
+</script>

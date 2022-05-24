@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>function</h1>
+</body>
+</html>
+<script>
+
+
+ function my()
+ {
+     Object.defineProperty(this,"length",{//but in array along with the arguments there will length to overcome this problem we use another property 
+        value:0,
+        writable:true,
+        enumerable:false, //output will be [x,y,z] dont count the property length
+        // enumerable:true, output will be [x,y,z,3]
+     });
+     this.length=arguments.length;
+     for(let i=0;i<this.length;i++)
+     {
+         this[i]=arguments[i]//x,y,z are the arguments
+         
+     }
+ }
+
+
+
+my.prototype.push=function(value)
+{
+     //pushproperty
+    let index=this.length;
+    this[index]=value;
+    this.length++;
+}
+let a2=new my("x","y","z");
+a2.push(5)
+
+
+my.prototype.pop=function()   //pop function
+{
+    let index=this.length-1;
+   delete this[index]     //delete is aproperty used to delete element in an object
+    this.length--;
+}
+
+
+my.prototype.size=function()   //function to find length
+{
+    let index=this.length;
+   console.log("length:",index)
+}
+
+my.prototype.top=function()   //function to find length
+{
+    let index=this.length-1;
+   console.log("last Index:",a2[index])
+}
+my.prototype.printReverse=function()   //function to find length
+{ let arr=[]
+    for(let i=this.length-1;i>=0;i--)
+    {
+        arr.push(a2[i])
+    }
+    console.log("Reverse array",arr)     
+}
+my.prototype.print=function()
+{
+     console.log("Array:",Object.values(a2))
+
+}
+
+a2.pop()
+
+a2.push(10)
+a2.size()
+a2.top()
+a2.printReverse()
+a2.print()
+// console.log("Array:",Object.values(a2))
+let a1=new Array()
+// console.log(a1)  //output will be an object
+// to convert object into array we use Object.value()
+
+
+</script>

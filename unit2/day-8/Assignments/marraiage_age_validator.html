@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="" id="gender">
+        <option value="">Select Gender</option>
+        <option value="MALE">MALE</option>
+        <option value="FEMALE">FEMALE</option>
+    </select>
+    <input type="number" value="" id="year" placeholder="Enter DOB">
+    <button onclick="check_eligibility()">SUBMIT</button>
+   
+</body>
+</html>
+
+<script>
+ function check_eligibility()
+ {
+    var DOB=document.getElementById("year").value;
+    var age=2022-DOB;
+    var Gender=document.getElementById("gender").value;
+   
+    if(Gender=="MALE")
+    {
+        if(age>=21)
+        {
+            alert("Eligible For Marriage")
+        }
+        else
+        {
+            alert("Not Eligible For Marriage!!!!!!")
+        }
+    }
+    else if(Gender=="FEMALE")
+    {
+        if(age>=18)
+        {
+            alert("Eligible For Marriage")
+        }
+        else
+        {
+            alert("Not Eligible For Marriage!!!!!!") 
+        }
+    }
+ }
+
+</script>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PERIODIC TABLE</title>
+        <style>
+            .main{
+                height: 720px;
+                width: 72%;
+                border: 1px solid white;
+                margin: auto;
+                margin-top: -20px;
+                margin-bottom: -50px;
+                background-color: white;
+               
+            }
+            #demo
+            {
+                margin: 5% 30px 30px 25%;
+                
+            }
+            .main1
+            {
+                height: 100px;
+                width: 95%;
+                border: 1px solid white;
+                margin: 0px 25px 0px 25px;
+                display: flex;
+            }
+
+            .main2
+            {
+                height: 400px;
+                width: 95%;
+                border: 1px solid white;
+                margin: 0px 25px 0px 25px;
+                display: flex;
+            }
+
+            .main3
+            {
+                height: 70px;
+                width: 53%;
+                border: 0px solid black;
+                margin: 30px 22% 0px 22%;
+                
+
+            }
+
+            #dbox{
+                 height: 100%;
+                 width:7.14%;
+                 border: 1px solid black;
+            }
+
+            #dbox1{
+                height: 50%;
+                width:100;
+                 border: 0px solid black;
+                 display: flex;
+            }
+
+            .mbox_a{
+                height:100%;
+                width: 17%;
+                border: 1px solid white;
+                display: flex;
+            }
+
+            .mbox_b{
+                height:100%;
+                width: 50%;
+                border: 1px solid white;
+                
+                  }
+
+                  .mbox_c{
+                height:100%;
+                width: 33%;
+                border: 1px solid white;
+                display: flex;  }
+
+                .mbox_b_upper
+                {
+                    height:40%;
+                width: 100%;
+                border: 1px solid white;
+                }
+
+                .mbox_b_lower
+                {
+                    height:60%;
+                width: 100%;
+                border: 1px solid white;
+                display: flex;
+                }
+
+                .mbox_a_1
+                {
+                    height:100%;
+                width: 26%;
+                border: 1px solid white; 
+                margin-left: 7px;
+                }
+
+                .mbox_b_1
+                {
+                    height:100%;
+                width: 26%;
+                border: 1px solid white; 
+                margin-right: 7px;
+                }
+
+                .mbox_c_1
+                {
+                    height:100%;
+                width: 26%;
+                border: 1px solid white; 
+                margin-right: 7px; 
+                }
+
+                .mbox_b_upper_1
+                {
+                    height:130px;
+                width: 130px;
+                border: 1px solid white ;
+                margin: 10px 0px 10px 0px;
+                
+                }
+
+                .mbox_a_1s
+                {
+                    height:45px;
+                width: 100%;
+                border: 1px solid white ;
+                /* margin: 10px 0px 10px 0px;   */
+                }
+
+                .mbox_a_1sa
+                {
+                    height:45px;
+                width: 100%;
+                border: 1px solid black  ;
+                 margin-top: 10px;   }
+
+                .mbox_b_1s{
+                    margin-top: 7px;
+                    height:45px;
+                width: 100%;
+                border: 1px solid black 
+                }
+
+                .mbox_b_1sa
+                {
+                    height:45px;
+                width: 100%;
+                border: 1px solid black  ;
+                 margin-top: 10px;   }
+
+                 .mbox_c_1s
+                {
+                    height:45px;
+                width: 100%;
+                border: 1px solid black ;
+                /* margin: 10px 0px 10px 0px;   */
+                }
+
+
+                #border{
+                    border: 1px solid white;
+                }
+
+                .bordera{
+                    border: 4px solid black
+                }
+                
+                #red{
+                    background-color: #aa0000;
+                    
+                }
+
+                #white{
+                    color: white;
+                    margin: 8px 8px 8px 12px;
+                    font-family: sans-serif;
+                }
+
+                #green{
+                    background-color: #89a02c;
+                }
+
+                #pink{
+                    background-color: #ff5555;
+                }
+
+                #black{
+                    color: black;
+                    margin: 12px 8px 8px 15px;;
+                   
+                }
+
+                #lightpink{
+                  
+                }
+
+                .small
+                {
+                    height:80%;
+                    width: 80%;
+                    margin: 3.5px 3px 3px 3.5px;
+                    border: 1px solid black;
+                    background-color: #ffe6d5;
+                }
+
+                #black1{
+                    background-color: black;
+                }
+
+                #blue{
+                    background-color: #0000fe;
+                }
+
+                #violet{
+                    background-color: #aa0087;
+                }
+
+                #darkpink
+                {
+                    background-color: #ff6600;
+                }
+
+                #darkgreen
+                {
+                    background-color: #5aa02c;
+                }
+
+                #darkpink1{
+                    background-color: #ff0066;
+                }
+
+                #yellowdark{
+                    background-color: #ffcc00;
+                }
+
+                #grey{
+                    background-color: #6d535e;
+                }
+
+                #boxgreen{
+                    background-color: #89a02c;
+
+                }
+
+                #word{
+                    font-size: 50px;
+                    margin: 40px 0px 0px 5px;
+                    font-family: sans-serif;
+                }
+                #word1{
+                    margin: -3px 0pc 0pc 5px ;
+
+                }
+                #word2
+                {
+                    margin:-110px  0px 0px 100px ;
+                }
+
+                .olivegreen
+                {
+                    background-color: #6c6e38;
+                }
+
+                .lightgreen
+                {
+                    background-color: #95bc5e;
+                }
+
+                #word4{
+                    color: white;
+                    font-family: sans-serif;
+                    margin: 10px 0px 5px 5px;
+                }
+
+                #word5{
+                    font-family: sans-serif;
+                    margin: 8px 1px 2px 3px;
+                }
+
+                #word6
+                {
+                    font-family: sans-serif;
+                    margin: 13px 0px 0px 13px;  
+                }
+
+                .main5
+                {
+                    height: 90px;width: 72%;margin: auto;border: 1px solid white;
+                    background-color: white;
+                }
+
+        </style>
+    </head>
+    <body id="black1">
+        <div class="main">
+            <div class="main1"><h2 id="demo">THE PERIODIC TABLE OF THE ELEMENTS</h2></div>
+            
+        <div class="main2">
+
+            <div class="mbox_a">
+                <div class="mbox_a_1">
+                    <div class="mbox_a_1s"; id="red"><h2 id="white">H</h2></div>
+                    <div class="mbox_a_1sa"; id="green"></div>
+                    <div class="mbox_a_1sa"; id="green"></div>
+                    <div class="mbox_a_1sa"; id="green"></div>
+                    <div class="mbox_a_1sa"; id="green"></div>
+                    <div class="mbox_a_1sa"; id="green"></div>
+                    <div class="mbox_a_1sa"; id="green"></div>
+                </div>
+
+                <div class="mbox_a_1">
+                    <div class="mbox_a_1s"></div>
+                    <div class="mbox_a_1sa"; id="pink"><h3 id="black">4</h3></div>
+                    <div class="mbox_a_1sa"; id="pink"><h3 id="black">12</h3></div>
+                    <div class="mbox_a_1sa"; id="pink"><h3 id="black">20</h3></div>
+                    <div class="mbox_a_1sa"; id="pink"><h3 id="black">38</h3></div>
+                    <div class="mbox_a_1sa"; id="pink"><h3 id="black">56</h3></div>
+                    <div class="mbox_a_1sa"; id="pink"><h3 id="black">88</h3></div>
+                </div>
+
+                <div class="mbox_a_1">
+                    <div class="mbox_a_1s"></div>
+                    <div class="mbox_a_1sa"; id="border"></div>
+                    <div class="mbox_a_1sa"; id="border"></div>
+                    <div class="mbox_a_1sa"; id="border"></div>
+                    <div class="mbox_a_1sa"; id="border"></div>
+                    <div class="mbox_a_1sa"; id="black1">
+                        <div class="small"></div>
+                    </div>
+                    <div class="mbox_a_1sa"; id="black1">
+                        <div class="small"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mbox_b">
+                <div class="mbox_b_upper">
+                    <div class="mbox_b_upper_1"; id="boxgreen"><h1 id="word">Si</h1>
+                    <h3 id="word1">Silicon</h3><h3 id="word2">14</h3></div>
+                </div>
+
+                <div class="mbox_b_lower">
+                    <div class="mbox_b_1">
+                        <div class="mbox_b_1s"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        
+                    </div>
+                   
+                    <div class="mbox_b_1">
+                        <div class="mbox_b_1s"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        
+                    </div>
+                   
+                    <div class="mbox_b_1">
+                        <div class="mbox_b_1s"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                       
+                    </div>
+                   
+                    <div class="mbox_b_1">
+                        <div class="mbox_b_1s"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        
+                    </div>
+                   
+                    <div class="mbox_b_1">
+                        <div class="mbox_b_1s"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        
+                    </div>
+                   
+                    <div class="mbox_b_1">
+                        <div class="mbox_b_1s"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                    </div>
+                   
+                    <div class="mbox_b_1">
+                        <div class="mbox_b_1s"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                    </div>
+                   
+                    <div class="mbox_b_1">
+                        <div class="mbox_b_1s"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                    </div>
+                   
+                    <div class="mbox_b_1">
+                        <div class="mbox_b_1s"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                        <div class="mbox_b_1sa"; id="blue"></div>
+                    </div>
+                </div>
+            </div> 
+            <div class="mbox_c">
+                <div class="mbox_c_1">
+                    <div class="mbox_a_1s"></div>
+                    <div class="mbox_a_1sa"; id="violet"></div>
+                    <div class="mbox_a_1sa"; id="darkpink"></div>
+                    <div class="mbox_a_1sa"; id="darkpink"></div>
+                    <div class="mbox_a_1sa"; id="darkpink"></div>
+                    <div class="mbox_a_1sa"; id="darkpink"></div>
+                    <div class="mbox_a_1sa"; id="grey"></div>
+                </div>
+               
+                <div class="mbox_c_1">
+                    <div class="mbox_a_1s"></div>
+                    <div class="mbox_a_1sa"; id="darkgreen"></div>
+                    <div class="mbox_a_1sa"; id="violet"></div>
+                    <div class="mbox_a_1sa"; id="violet"></div>
+                    <div class="mbox_a_1sa"; id="darkpink"></div>
+                    <div class="mbox_a_1sa"; id="darkpink"></div>
+                    <div class="mbox_a_1sa"; id="grey"></div>
+                </div>
+                
+                <div class="mbox_c_1">
+                    <div class="mbox_a_1s"></div>
+                    <div class="mbox_a_1sa"; id="darkgreen"></div>
+                    <div class="mbox_a_1sa"; id="darkgreen"></div>
+                    <div class="mbox_a_1sa"; id="violet"></div>
+                    <div class="mbox_a_1sa"; id="violet"></div>
+                    <div class="mbox_a_1sa"; id="darkpink"></div>
+                    <div class="mbox_a_1sa"; id="grey"></div>
+                </div>
+               
+                <div class="mbox_c_1">
+                    <div class="mbox_a_1s"></div>
+                    <div class="mbox_a_1sa"; id="darkgreen"></div>
+                    <div class="mbox_a_1sa"; id="darkgreen"></div>
+                    <div class="mbox_a_1sa"; id="darkgreen"></div>
+                    <div class="mbox_a_1sa"; id="violet"></div>
+                    <div class="mbox_a_1sa"; id="violet"></div>
+                    <div class="mbox_a_1sa"; id="grey"></div>
+                </div>
+               
+                <div class="mbox_c_1">
+                    <div class="mbox_a_1s"></div>
+                    <div class="mbox_a_1sa"; id="darkpink1"></div>
+                    <div class="mbox_a_1sa"; id="darkpink1"></div>
+                    <div class="mbox_a_1sa"; id="darkpink1"></div>
+                    <div class="mbox_a_1sa"; id="darkpink1"></div>
+                    <div class="mbox_a_1sa"; id="darkpink1"></div>
+                    <div class="mbox_a_1sa"; id="grey"></div>
+                </div>
+               
+                <div class="mbox_c_1">
+                    <div class="mbox_c_1s"; id="yellowdark"></div>
+                    <div class="mbox_a_1sa"; id="yellowdark"></div>
+                    <div class="mbox_a_1sa"; id="yellowdark"></div>
+                    <div class="mbox_a_1sa"; id="yellowdark"></div>
+                    <div class="mbox_a_1sa"; id="yellowdark"></div>
+                    <div class="mbox_a_1sa"; id="yellowdark"></div>
+                    <div class="mbox_a_1sa"; id="grey"></div>
+                </div>
+            </div>  
+
+        </div>
+
+        <div class="main3">
+          <div id="dbox1">
+            <div id="dbox"; class="olivegreen" ><h3 id="word4">La</h3></div>
+            <div id="dbox"; class="olivegreen"></div>
+            <div id="dbox"; class="olivegreen" ></div>
+            <div id="dbox"; class="olivegreen"></div>
+            <div id="dbox"; class="olivegreen" ></div>
+            <div id="dbox"; class="olivegreen"></div>
+            <div id="dbox"; class="olivegreen" ></div>
+            <div id="dbox"; class="olivegreen"></div>
+            <div id="dbox"; class="olivegreen" ></div>
+            <div id="dbox"; class="olivegreen"></div>
+            <div id="dbox"; class="olivegreen" ></div>
+            <div id="dbox"; class="olivegreen"></div>
+            <div id="dbox"; class="olivegreen" ></div>
+            <div id="dbox"; class="olivegreen"></div>
+          </div>
+           <div id="dbox1">
+            <div id="dbox"; class="lightgreen"></div>
+            <div id="dbox"; class="lightgreen"></div>
+            <div id="dbox"; class="lightgreen"></div>
+            <div id="dbox"; class="lightgreen"></div>
+            <div id="dbox"; class="lightgreen"></div>
+            <div id="dbox"; class="lightgreen"></div>
+            <div id="dbox"; class="lightgreen"><h3 id="word5">Am</h3></div>
+            <div id="dbox"; class="lightgreen"></div>
+            <div id="dbox"; class="lightgreen"></div>
+            <div id="dbox"; class="lightgreen"></div>
+            <div id="dbox"; class="lightgreen"></div>
+            <div id="dbox"; class="lightgreen"></div>
+            <div id="dbox"; class="lightgreen"></div>
+            <div id="dbox"; class="lightgreen"><h3 id="word6">No</h3></div>
+           </div>
+        
+        </div>
+        </div>
+        <div class="main5"></div>
+
+    </body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+       background-color: #fdefea;
+    }
+    #paybox{
+        display: flex;
+        justify-content: space-around;
+        padding: 0px 80px  0px 250px;
+    }
+    #container{
+        margin: 5% auto;
+        height: 400px;
+        width: 350px;
+        border: 0px solid black;
+        padding:  40px;
+        background-color: white;
+    }
+    input{
+        height: 40px;
+        width: 350px;
+        font-size: 20px;
+        margin-top: 30px;
+    }
+    #date{
+        width: 215px;
+    }
+    #cvv{
+        width: 100px;
+        margin-left: 15px;
+    }
+    button{
+        display: block;
+        margin: 5% auto;
+        height: 40px;
+        width: 350px;
+        font-size: 18px;
+        font-weight: 550;
+        border: none;
+        color: white;
+        background-color:#ff3f6c
+    }
+    h3{
+        font-family: sans-serif;
+        margin-bottom: -10px;
+    }
+    #check{
+        height: 15px;
+        width: 15px;
+        margin-top: 15px;
+    }
+    p{
+        display: inline;
+        font-family: sans-serif;
+        font-size: 15px;
+    }
+    #main{
+        margin: 5% auto;
+        height: 300px;
+        width: 350px;
+        border: 0px solid black;
+        padding:  40px;
+        background-color: white;
+    }
+    .total1,.total2,.total3,.total4{
+    display: flex;
+    justify-content: space-between;
+}
+.pay{
+    font-size: 25px;
+}
+
+</style>
+<body><div id="paybox">
+    <div id="container">
+        <h3>CREDIT/DEBIT CARD</h3>
+        <input id="CNUM" type="number" placeholder="Card Number">
+        <input id="CNAME" type="text" placeholder="Name on card">
+        <input id="date" type="number" placeholder="Valid Thru (MMYY)">
+        <input id="cvv" type="number" placeholder="CVV">
+        <input id="check" type="checkbox">
+        <p>save this card for faster payment</p>
+        <button id="card">PAY NOW</button>
+        <button id="COD">CASH ON DELIVERY</button>
+    </div>
+    <div id="main">
+        <h2 id="heading"></h2>
+            <div class="total1"></div>
+            <div class="total2"></div>
+            <div class="total3"> </div>
+</div>
+</body>
+</html>
+
+<script>
+
+ document.querySelector("#COD").addEventListener("click",clickCOD)
+ function clickCOD()
+ {
+  alert("Oder Placed Successfully")
+ }
+
+var length=localStorage.getItem("length")
+ var number=document.querySelector("#heading")
+  number.innerText="PRICE DETAILS ( "+length+" items )";
+
+
+  var MRP=localStorage.getItem("MRP")
+  var totalmrp=document.createElement("h4")
+  totalmrp.innerText="Total MRP";
+  var totalMRP=document.createElement("h4")
+  totalMRP.innerText="₹"+MRP;
+  document.querySelector(".total1").append(totalmrp,totalMRP)
+
+
+ 
+  var  discount=localStorage.getItem("discount")
+var total2=document.querySelector(".total2")
+ var totaldis=document.createElement("h4")
+ totaldis.innerText="DISCOUNT on MRP";
+  var totalDIS=document.createElement("h4")
+  totalDIS.innerText="-₹"+discount;
+  totalDIS.style.color="green"
+total2.append(totaldis,totalDIS)
+
+var  Total=localStorage.getItem("Amount")
+var total3=document.querySelector(".total3")
+ var totalpay=document.createElement("h4")
+ totalpay.setAttribute("class","pay")
+ totalpay.innerText="Amount to pay";
+  var totalPAY=document.createElement("h4")
+  totalPAY.setAttribute("class","pay")
+  totalPAY.innerText="₹"+Total;
+total3.append(totalpay,totalPAY)
+
+document.querySelector("#card").addEventListener("click",myCard)
+
+    function myCard()
+    {
+       
+        var cnum=document.querySelector("#CNUM").value
+        var cname=document.querySelector("#CNAME").value
+        var date=document.querySelector("#date").value
+        var cvv=document.querySelector("#cvv").value
+        
+        if(cnum==""||cname==""||date==""||cvv=="")
+        {
+            alert("Enter Card Details Correctly")
+        }
+        if(cnum=="123456789"&&cname=="MICHEAL"&&date=="1122"&&cvv=="123")
+        {
+            window.location.href="OTP.html"
+        }
+       
+    }
+
+</script>

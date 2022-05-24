@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #navbar{
+            height: 100px;
+            width: 99%;
+            background-color:teal;
+           display: flex;
+           justify-content: space-between;
+           align-items: center; 
+           padding-right: 20px;
+        }
+        #movies{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            padding: 20px 40px;
+            gap: 20px;
+        }
+        #box{
+            height: 600px;box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+        }
+        img{
+            height: 65%;
+            width: 100%;
+        }
+        #main{
+            display: flex;  
+        }
+        #content{
+            display: flex;
+            gap: 30px;
+            margin-right: 20px;
+            font-size: 22px;
+            color: white;
+        }
+        a{
+            color: white;
+            text-decoration: none;
+        }
+        #hot{
+            margin-left: 20px;
+            font-size: 28px;
+            color: white;
+        }
+        #err{
+           
+            height: 600px;
+            width: 80%;
+            margin: auto;
+        }
+        h3,h2{margin-left: 10px;}
+
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div id="hot"><a href="index.html"><h2>Hotstar</h2></a></div>
+        <div id="main">
+            <div id="content">
+
+            <div><a href="rending.html" >Trending</a></div>
+            <div>Login</div>
+            <div>Signup</div>
+        </div>
+        <input type="text" id="search">
+        <button onclick="searchMovie()">Search</button>
+    </div>
+    </div>
+    <div id="movies"></div>
+    <div id="err"></div>
+</body>
+</html>
+
+<script>
+    function searchMovie()
+    {
+        const search=document.querySelector("#search").value
+        let url=`https://api.themoviedb.org/3/search/movie?api_key=3f2f83dd6f1bb795c2fe307158573342&language=en-US&page=1&include_adult=false&query=${search}`
+        fetch(url)
+        .then(function(res){
+            return res.json()
+        })
+       
+        .then(function(res){
+            console.log(res.results)
+            appendMovies(res.results)
+           
+        })
+        .catch(function(err){
+            console.log(err)
+        })
+        
+        function appendMovies(data){
+        document.querySelector("#movies").innerHTML=""
+        document.querySelector("#err").innerHTML="";
+
+        console.log(data.length)
+        if(data.length===0)
+        {
+            let image1=document.createElement("img")
+         image1.src="https://thumbs.dreamstime.com/b/search-error-text-inside-magnifying-glass-means-finding-errors-51660864.jpg"
+         document.querySelector("#err").append(image1)  
+        }
+      data.map(function(elem){
+        
+        let box=document.createElement("div")
+            box.setAttribute("id","box")
+
+          let p=document.createElement("h2")
+         let image=document.createElement("img")
+         image.src=`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${elem.poster_path}`;
+
+          p.innerText=elem.title;
+
+          let year=document.createElement("h3")
+        let imbd=document.createElement("h3")
+
+        imbd.innerText="IMBD Rating : " +elem.vote_average;
+         year.innerText="Releasing Year : "+elem.release_date;
+         if(elem.vote_average>8.5)
+         {
+            let pa=document.createElement("p") 
+            pa.innerText="Recomended" 
+            pa.style.backgroundColor="green"
+            pa.style.color="white"
+            box.append(image,p,year,imbd,pa)
+         }
+         else{
+          box.append(image,p,year,imbd,)}
+          document.querySelector("#movies").append(box)
+         
+      })
+    }  
+        
+       
+    }
+</script>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+
+
+class Audience{
+  constructor(type, age, gender) {
+    this._type = type;
+    this._age = age;
+    this._gender = gender;
+  }
+
+  get type() {
+    return this._type;
+  }
+
+  set type(value) {
+    this._type = value;
+  }
+ 
+}
+
+
+class VVIP extends Audience {
+  constructor(age, gender) {
+    super("VVIP", age, gender);
+  }
+}
+
+class VIP extends Audience {
+  constructor(age, gender) {
+    super("VIP", age, gender);
+  }
+}
+
+class general extends Audience {
+  constructor(age, gender) {
+    super("general", age, gender);
+  }
+}
+
+class Slot {
+  constructor(type, number) {
+    this.number = number;
+    this.type = type;
+    this._isBooked = false;
+  }
+
+  get isBooked() {
+    return this._isBooked;
+  }
+
+  set isBooked(value) {
+    this._isBooked = value;
+  }
+}
+
+
+class FLOOR {
+  constructor(floornumber, maxFloor) {
+    this.floornumber = floornumber;
+    this._spots = []; 
+
+  
+    for (let i = 0; i < maxFloor; i++) {
+      if (i === 0) {
+    
+
+        this._spots.push(new Slot("VVIP", i));
+      } else if (i === 1) {
+        
+
+        this._spots.push(new Slot("VIP", i));
+      } else {
+        
+        this._spots.push(new Slot("general", i));
+      }
+    }
+  }
+
+  get spots() {
+    return this._spots;
+  }
+}
+
+
+class tickets {
+  constructor(number) {
+    this._floors = [];
+    this._numberofFloors = number;
+
+    for (let i = 0; i < number; i++) {
+      this._floors[i] = new FLOOR(i, number);
+    }
+  }
+
+  get numberofFloors() {
+    return this._numberofFloors;
+  }
+
+  get floors() {
+    return this._floors;
+  }
+
+  set floors(value) {
+    this._floors = value;
+  }
+
+  typeOfAudience(vehicle) {
+    let slot = this.findSlot(vehicle.type); //car, bike, truck
+
+    if (!slot) {
+      console.log("No slots");
+      return false;
+    }
+
+    this.bookslot(slot);
+
+    let ticket = new Ticket(slot.floornumber, slot.slot.number);
+    console.log("ticket is issued:", ticket);
+  }
+
+  findSlot(type) {
+   
+    for (let i = 0; i < this._numberofFloors; i++) {
+      for (let slot of this._floors[i]._spots) {
+        if (slot.type === type && !slot._isBooked) {
+          return { floornumber: i, slot: slot };
+        }
+      }
+    }
+
+    return false;
+  }
+
+  bookslot(slot) {
+    slot.slot.isBooked = true;
+    console.log("slot is booked:", slot);
+
+    return true;
+  }
+}
+
+class Ticket {
+  constructor(floorNumber, slotNumber) {
+    this.floorNumber = floorNumber;
+    this.slotNumber = slotNumber;
+
+    this.issuedAt = new Date();
+  }
+}
+
+let p1 = new tickets(3);
+
+let b1 = new VVIP("45", "Male");
+let c2=new VIP("33","Female")
+let d1 = new general("45", "Male");
+let e2=new VIP("33","Female")
+p1.typeOfAudience(b1);
+p1.typeOfAudience(c2);
+p1.typeOfAudience(d1);
+p1.typeOfAudience(e2)
+
+
+</script>
+
+

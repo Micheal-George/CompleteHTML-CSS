@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    input,select{
+        display: block;
+        margin:1% auto;
+        width: 300px;
+        font-size: 25px;
+    }
+  #main{
+      margin: 10% auto;
+  }
+</style>
+<body>
+    <div id="main">
+    <form action="">
+      <input type="text" placeholder="Enter Product Name" id="name">
+        <input type="text" placeholder="Enter Category" id="category">
+        <input type="text" placeholder="Add image url" id="image">
+        <input type="number" placeholder="Enter Price" id="price">
+        <select name="" id="gender">
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <select name="" id="sold">
+            <option value="false">Sold</option>
+            <option value="true">Available</option>
+        </select>
+            
+      
+        <input type="submit" id="add">
+    </form>
+</div>
+</body>
+</html>
+<script>
+     var mydata=JSON.parse(localStorage.getItem("Products"))||[]
+    document.querySelector("#add").addEventListener("click",myFun)
+   
+    function myFun()
+    {
+        event.preventDefault()
+        
+    var form=document.querySelector("form")
+    
+    function dataP(N,C,I,P,G,S)
+    {
+        this.name=N;
+        this.category=C;
+        this.image_url=I
+        this.price=P;
+        this.gender=G
+        this.sold=S
+    }
+  var x=new dataP(form.name.value,form.category.value,form.image.value,form.price.value,form.gender.value,form.sold.value)
+  mydata.push(x)
+localStorage.setItem("Products",JSON.stringify(mydata))
+window.location.reload();
+    }
+</script>

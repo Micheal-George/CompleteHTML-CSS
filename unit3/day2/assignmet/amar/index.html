@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="amar"></h1>
+    <h1 id="akbar"></h1>
+    <h1 id="antony"></h1>
+</body>
+</html>
+<script>
+    let amar={
+        name:"Amar",
+        profession:"Singer",
+        place:"Goa"
+    };
+    let akbar={
+        name:"Akbar",
+        profession:"Chef",
+        place:"Mumbai"
+    };
+    let antony={
+        name:"Antony",
+        profession:"Magician",
+        place:"Kashmir"
+    };
+    function change(prof)
+    {
+        var M=this.name+" is a "+prof+" ,living in "+this.place
+        console.log(M)
+        return M
+    }
+    var x=change.call(amar,akbar.profession)
+   let y= change.call(akbar,antony.profession)
+   let z= change.call(antony,amar.profession)
+   document.querySelector("#amar").innerHTML=x
+   document.querySelector("#akbar").innerHTML=y
+   document.querySelector("#antony").innerHTML=z
+</script>

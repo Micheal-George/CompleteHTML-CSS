@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+        }
+    </style>
+</head>
+<body>
+    <h1>hello</h1>
+    <div id="container"></div>
+</body>
+</html>
+
+<script> //to fetch data from api(server)
+    const url="https://reqres.in/api/users?page=2"
+    fetch(url)
+    .then(function (res){
+        return res.json()  //small json collect data while JSON convert data
+    })
+    .then(function (res){
+        append(res.data)
+        console.log(res.data)
+    })
+    .catch(function(err){
+        console.log(err)
+    })
+
+    function append(data1)
+    {
+    data1.map(function(elem){
+        let box=document.createElement("div")
+
+        let Fname=document.createElement("h3")
+        let Lname=document.createElement("h3")
+        let image=document.createElement("img")
+        let email=document.createElement("p")
+        let id=document.createElement("h3")
+
+            Fname.innerText=elem.first_name;
+            Lname.innerText=elem.last_name;
+            id.innerText=elem.id;
+            image.src=elem.avatar;
+            email.innerText=elem.email;
+
+            box.append(image,id,Fname,Lname,email)
+            document.querySelector("#container").append(box)
+
+
+    })}
+</script>

@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        body{
+            background-color: black;
+        }
+        .container
+        {
+            height: 160px;width: 100%;
+            border: 0px solid black;
+            margin-top: 270px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;  
+            background-color: white;
+        }
+
+        .main
+        {
+            height: 75px;
+            width: 93%;
+            border: 0px solid black;
+            display: grid;
+            grid-template-columns: repeat(9,1fr);
+            gap: 10px;
+            
+
+        }
+
+        .main>div{
+            border: 0px solid black; 
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            font-size: 32px;
+            font-family: sans-serif;
+            padding: 15px 20px;
+        }
+
+        #primary{
+            background-color: #037bff;
+            color: white;
+        }
+
+        #secondary{
+            background-color: #6c757d;
+            color: white;
+        }
+
+        #success{
+            background-color: #2aa645;
+            color: white;
+        }
+
+        #danger{
+            background-color: #dc3445;
+            color: white;
+        }
+
+        #warning{
+            background-color: #ffc008;
+            color: black;
+        }
+
+        #info
+        {
+            width: 65px;
+            background-color: #14a2b8;
+            color: white;
+        }
+        #light{
+            width: 90px;
+            margin-left: -52px;
+            color: #15132b;
+        }
+
+        #dark{
+            width: 90px;
+            margin-left: -80px; 
+            background-color: #353a41;
+            color: white;
+        }
+
+        #link{
+            width: 90px;
+            margin-left: -110px; 
+            color: #097eff;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main">  
+                <div id="primary">Primary</div>
+                <div id="secondary">Secondary</div>
+                <div id="success">Success</div>
+                <div id="danger">Danger</div>
+                <div id="warning">Warning</div>
+                <div id="info">Info</div>
+                <div id="light">Light</div>
+                <div id="dark">Dark</div>
+                <div id="link">Link</div>
+        </div>
+    </div>
+</body>
+</html>

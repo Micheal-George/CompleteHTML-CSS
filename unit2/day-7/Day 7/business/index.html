@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container
+        {
+            height: 650px;
+            width: 70%;
+            border: 0px solid black;
+            margin: auto;
+            
+        }
+
+        .main{
+            height: 250px;
+            width: 100%;
+            border: 0px solid black;
+        }
+        .sub
+        {
+            height: 400px;
+            width: 100%;
+            border: 0px solid black;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+
+        .sub>div
+        {
+            border: 0px solid black; 
+            padding: 20px;
+        }
+
+        h1{
+            margin: 60px 300px 0px 150px;
+            font-family: sans-serif;
+            font-size: 40px;
+            text-align: center;
+            color: #19304b;
+        }
+
+        #heading{
+            margin: 25px 260px 0px 120px;
+            font-family: sans-serif;
+            font-size: 18px;
+            text-align: center;
+            color: #888080;  
+        }
+
+    h2,h3
+    {
+        text-align: center;
+        font-family: sans-serif;
+    }
+
+    h3{
+        font-family: sans-serif;
+        font-size: 35px;  
+        margin-top: -5px;
+        color: #09ab78;
+    }
+
+    h3+p{
+        color: #888080;
+        font-style: italic;
+        text-align: center;
+        margin-top: -35px;
+        font-family: sans-serif;
+        font-size: 15px;
+    }
+
+    p+p{
+        color: #888080; 
+        margin: 35px 22.5px;
+            font-family: sans-serif;
+            font-size: 17px;
+            text-align: center;    
+    }
+
+    button{
+        color: #007aff;
+        padding: 10px 20px;
+        width: 150px;
+        margin-left: 75px ;
+        border: 1px solid #007aff;
+        font-size: 20px;
+        font-weight: 600;
+        background-color: white;
+        border-radius: 10px;
+
+    }
+
+    #BP{
+        color:#f27e42 ;
+    }
+    #PP{
+        color:#4294f2 ;
+    }
+    #BPB
+    {
+        color: white;
+        background-color:#007aff ;
+    }
+
+    @media only screen and (min-width: 421px) and (max-width: 780px)
+    {
+        .sub{
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows:auto;
+        
+        }
+        .main{
+            display: flex;
+            flex-direction: column;
+            width: 600px;
+            height: 300px;
+            text-align: center;
+        }
+        h1,#heading{
+            text-align: center;
+             margin-left: 120px;
+             margin-right: 120px; 
+          
+        }
+    }
+
+    @media only screen and (min-width: 70px) and (max-width: 420px)
+    {
+        .sub{
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows:auto;
+        margin-top: -150px;
+        }
+        .main{
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            height: 500px;
+            text-align: center;
+        }
+        h1,#heading{
+            text-align: center;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        .sub>div
+        {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <h1>Choose a paln that right for your business</h1>
+        <p id="heading">We collect review from our users so you can get an honest opinion of what an experience with our website are like!</p>
+        </div>
+        <div class="sub">
+            <div>
+                <h2>Starter Plan</h2>
+                <h3>Free</h3>
+                <p>per month</p>
+                <p>We collect reviews from our users so you can get an honest opinion of what an experience with our website</p>
+                <button>Start Now</button>
+            </div>
+            <div>
+                <h2>Business Plan</h2>
+                <h3 id="BP">$39.00</h3>
+                <p>per month</p>
+                <p>We collect reviews from our users so you can get an honest opinion of what an experience with our website</p>
+                <button id="BPB">Start Now</button>
+            </div>
+            <div>
+                <h2>Premium Plan</h2>
+                <h3 id="PP">$59.00</h3>
+                <p>per month</p>
+                <p>We collect reviews from our users so you can get an honest opinion of what an experience with our website</p>
+                <button>Start Now</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

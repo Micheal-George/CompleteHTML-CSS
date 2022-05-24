@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./scripts/nav.css">
+    <title>Document</title>
+</head>
+<style>
+   #box input{
+        display: block;
+        width: 250px;
+        margin-top: -13px;
+    }
+    #box{
+  background-color: #008080;
+        height: 300px;
+        width: 300px;
+        border: 1px solid black;
+        padding: 20px 60px 30px 60px;
+        margin:5% auto;
+        display: grid;
+        align-content: space-around;
+    }
+    #box>button{
+        width: 150px;
+        display: block;
+        margin: auto;
+    }
+    #box h3{
+color: white;
+font-size: 22px;
+    }
+</style>
+<body>
+    <div id="navbar"></div>
+    <div id="box">
+        
+            <div><h3>Email</h3>
+                <input type="text" id="email" placeholder="Enter Email"></div>
+        
+        <div>
+            <h3>Password</h3>
+            <input type="password" id="pass" placeholder="Enter Password">
+        </div>
+         <button id="submit">Submit</button>
+    </div>
+</body>
+</html>
+
+<script type="module">
+    import {navbar} from "./scripts/navbar.js"
+    document.querySelector("#navbar").innerHTML=navbar()
+    
+  let logindetails=JSON.parse(localStorage.getItem("details"))
+  
+   document.querySelector("#submit").addEventListener("click",myFun)
+    function myFun()
+    {
+        
+   let E= document.querySelector("#email").value
+   let P= document.querySelector("#pass").value
+   
+   for(let i=0;i<logindetails.length;i++)
+   {
+       if(logindetails[i].email==E&&logindetails[i].password==P)
+       {
+           console.log( logindetails[i])
+        //    console.log( logindetails[i].email)
+        //    console.log( logindetails[i].password)
+        //    console.log( logindetails[i].mobilenumber)
+           break;
+       }
+   }
+       
+    }
+    
+</script>   

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #navbar
+        {
+            height: 70px;
+            width: 100%;
+            background-color: teal;
+            margin-top: 10px;
+            display: flex;
+            justify-content:flex-end;
+        }
+        #main{
+            width: 800px;
+            height: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-content: center;
+        }
+        h3{
+            display: inline;
+            font-size: 22px;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+        }
+        #container{
+            height: 300px;
+            width: 400px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin: 90px auto;
+           padding-left: 35px;
+           padding-top: 50px;
+        }
+        input{
+            margin-left: 30px;
+            width: 200px;
+            font-size: 17px;
+        }
+        p{
+            font-size: 17px;
+        }
+        #submit{
+            display: block;
+            margin: 8% auto;
+            background-color: #2d8cff;
+            color: white;
+            border: none;
+            padding: 5px 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div id="main">
+            <h3><a href="index.html">HOME</a></h3>
+           <h3><a href="login.html"> LOGIN</a></h3>
+           <h3> <a href="signup.html">SIGNUP</a></h3>
+        </div>
+    </div>
+    <div id="container">
+        <form action="" id="form">
+           <table>
+               <thead></thead>
+               <tbody>
+                  
+                   <tr>
+                    <td><p>Email</p></td>
+                    <td> <input type="text" placeholder="Enter Email" id="email"></td>
+                </tr>
+                <tr>
+                    <td><p>Password</p></td>
+                    <td><input type="password" placeholder="Enter Password" id="pass"></td>
+                </tr>
+              
+               </tbody>
+           </table>
+            <input type="Submit" id="submit" >
+        </form>
+    </div>
+
+</body>
+</html>
+
+<script>
+    var Sdata=JSON.parse(localStorage.getItem("Signupdata"))
+
+document.querySelector("#submit").addEventListener("click",myFun1)
+
+function myFun1()
+{
+    event.preventDefault()
+   var email=document.querySelector("#email").value;
+   var pass=document.querySelector("#pass").value;
+   let count=0;
+for( let i=0;i<Sdata.length;i++)
+{
+    if(Sdata[i].email==email&&Sdata[i].pass==pass)
+    {
+        count++;
+        break
+    }
+}
+
+   if(count>0)
+            {
+                window.location.href="index.html";
+            }
+            else
+             {
+           alert("Invalid credential")
+          
+             }
+ 
+            document.querySelector("#email").value=null;
+        document.querySelector("#pass").value=null;
+   
+   
+}
+
+</script>

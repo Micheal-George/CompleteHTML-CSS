@@ -1,0 +1,68 @@
+
+
+	In CSS, there is a special piece of syntax you can use to make sure that a certain declaration will always win over all others: !important (even inline css)
+
+	https://codepen.io/nrupuld/pen/JQeZEP
+
+	https://codepen.io/nrupuld/pen/mZQjGQ
+
+	Specificity
+
+	The amount of specificity a selector has is measured using four different values (or components), which can be thought of as thousands, hundreds, tens and ones — four single digits 	in four columns:
+
+	1000 - Inline/Style Tag
+	Hundreds - One for each ID Selector
+	Tens - One for each class selector, attribute selector, pseudo-class contained inside the overall selector.
+	Ones - One for each element selector, pseudo-element contained inside the overall selector.
+
+		Note: Universal selector (*), combinators (+, >, ~, ' ') and negation pseudo-class (:not) have no effect on specificity.
+
+	| Selector                                | Thousands | Hundreds | Tens | Ones | Total |
+	|-----------------------------------------|-----------|----------|------|------|-------|
+	| h1                                      | 0         | 0        | 0    | 1    | 0001  |
+	| h1 + p                                  | 0         | 0        | 0    | 2    | 0002  |
+	| h1 + p::first-letter                    | 0         | 0        | 0    | 3    | 0003  |
+	
+	| li > a[href*="en-US"] > .inline-warning | 0         | 0        | 2    | 2    | 0022  |
+	| .class1                                 | 0         | 0        | 1    | 0    | 0010  |
+	| ul.class1                               | 0         | 0        | 1    | 1    | 0011  |
+	| #id1                                    | 0         | 1        | 0    | 0    | 0100  |
+	| style                                   | 1         | 0        | 0    | 0    | 1000  |
+	https://codepen.io/nrupuld/pen/VJVBBx
+
+	https://codepen.io/nrupuld/pen/ydQqrJ
+
+	Margin Collapse
+
+	https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing
+
+	Box Sizing
+
+	https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
+	
+	Media Queries
+
+	https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries
+
+	Exact Width (Exact Width)
+
+	@media (width: 480px) {
+	  div {
+  	  background: red;
+	  }
+	}
+	Min Width (Specified Width and Above)
+
+	@media (min-width: 600px) {
+	  div {
+	    background: green;
+	  }
+	}
+	Max Width (Specified Width And Below)
+
+	@media (max-width: 1024px) {
+	  div {
+	    background: blue;
+	  }
+	}
+	https://codepen.io/nrupuld/pen/WNewBjj

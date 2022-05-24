@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h1 {
+        text-align: center;
+        color: #f84364;
+        margin-bottom: 80px;
+      }
+
+      #container{
+        height: 480px;
+        width: 70%;
+        border: 0px solid black;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(3,150px);
+        gap: 30px;
+      }
+
+      #container>div{
+        border: 0.5px solid #f84364;;
+        display: flex;
+        box-sizing: border-box;
+      }
+
+      #container>div>div:nth-child(1)
+      {
+        height:100%;
+        width: 33.5%;
+        border: px solid ;
+        box-sizing: border-box;
+      }
+
+      #container>div>div:nth-child(2)
+      {
+        height:100%;
+        width: 66.5%;
+        border: 0px solid black;
+        padding-left: 20px;
+        box-sizing: border-box;
+      }
+
+      img{
+        height: 100%;
+        width: 100%;
+      }
+
+      h4,p,button{
+        
+        font-family: sans-serif;
+      }
+      p{
+        font-weight: 540;
+        font-size: 14px;
+        
+      }
+
+      button{
+        background-color:#f02d50;
+        height: 30px;
+        width: 100px;
+        border-radius: 10px;
+        border: 0px;
+      }
+      a{
+        color: white;
+        text-decoration: none;
+        font-family: sans-serif;
+        font-weight: 550;
+      }
+      /* Medium screens */
+      @media only screen and (min-width: 421px) and (max-width: 780px) {
+
+        #container{
+        grid-template-rows: auto;
+        }
+        #container>div>div:first-child{
+          height:200px;
+          width: 100%;
+          flex-direction: column;
+        }
+        #container>div{
+          padding: 20px 60px;
+          flex-direction:column; 
+        }
+
+        img{
+          border-radius: 50%;
+        }
+      }
+      
+      /* small screens */
+      @media only screen and (min-width: 70px) and (max-width: 420px) {
+        #container{
+        grid-template-rows: auto;
+        grid-template-columns:repeat(1,1fr) ;
+        }
+        #container>div>div:first-child{
+          height: 100%;
+          width: 100%;
+          flex-direction: column;
+        }
+        #container>div{
+          padding: 20px 60px;
+          flex-direction:column; 
+        }
+
+        img{
+          border-radius: 50%;
+        }
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <!-- image link - 
+      https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/radhe-shyam-et00135230-07-03-2022-04-16-56.jpg -->
+    <h1>Just movies</h1>
+    <div id="container">
+        <div>
+          <div>
+            <img src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:oi-discovery-catalog@@icons@@like_202006280402.png,ox-24,oy-617,ow-29:ote-NjUwayBsaWtlcw%3D%3D,ots-29,otc-FFFFFF,oy-612,ox-70:q-80/et00135230-qwmxxwmfye-portrait.jpg" alt="">
+          </div>
+          <div>
+            <h4>ET (2020)</h4>
+            <P>Releasing on 11 Mar,2022  </P>
+            <button> <a href="https://in.bookmyshow.com/buytickets/radhe-shyam-bengaluru/movie-bang-ET00135232-MT/20220310"> Book tickets</a></button>
+          </div>
+        </div>
+        <div>
+          <div>
+            <img src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:oi-discovery-catalog@@icons@@heart_202006300400.png,ox-24,oy-617,ow-29:ote-OTIlICA3ayB2b3Rlcw%3D%3D,ots-29,otc-FFFFFF,oy-612,ox-70:q-80/et00313071-zgmgwlzcyg-portrait.jpg" alt="">
+          </div>
+          <div>
+            <h4>Ethrakkum Thunindhavan</h4>
+            <p>Releasing on 10 Mar,2022</p>
+            <button><a href="https://in.bookmyshow.com/buytickets/etharkkum-thunindhavan-bengaluru/movie-bang-ET00313071-MT/20220310">Book tickets</a></button>
+          </div>
+        </div>
+        <div>
+          <div>
+            <img src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:oi-discovery-catalog@@icons@@heart_202006300400.png,ox-24,oy-617,ow-29:ote-ODQlICA1MGsgdm90ZXM%3D,ots-29,otc-FFFFFF,oy-612,ox-70:q-80/et00129624-wcwemkctag-portrait.jpg" alt="">
+          </div>
+          <div>
+            <h4>The Batman</h4>
+            <p>Releasing on 12 Mar,2022</p>
+            <button><a href="https://in.bookmyshow.com/buytickets/the-batman-bengaluru/movie-bang-ET00323746-MT/20220310">Book tickets</a></button>
+          </div>
+        </div>
+        <div>
+          <div>
+            <img src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:oi-discovery-catalog@@icons@@heart_202006300400.png,ox-24,oy-617,ow-29:ote-ODElICA3OGsgdm90ZXM%3D,ots-29,otc-FFFFFF,oy-612,ox-70:q-80/et00114897-mbgpfqprsw-portrait.jpg" alt="">
+          </div>
+          <div>
+            <h4>Gangubai Kathiawadi</h4>
+            <p>Releasing on 10 Mar,2022</p>
+            <button><a href="https://in.bookmyshow.com/buytickets/gangubai-kathiawadi-bengaluru/movie-bang-ET00114897-MT/20220310">Book tickets</a></button>
+          </div>
+        </div>
+        <div>
+          <div>
+            <img src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:oi-discovery-catalog@@icons@@heart_202006300400.png,ox-24,oy-617,ow-29:ote-OTElICA0Nmsgdm90ZXM%3D,ots-29,otc-FFFFFF,oy-612,ox-70:q-80/et00306242-jctdzfeqyq-portrait.jpg" alt="">
+          </div>
+          <div>
+            <h4>Bheeshma Parvam</h4>
+            <p>Releasing on 11 Mar,2022</p>
+            <button><a href="https://in.bookmyshow.com/buytickets/bheeshma-parvam-bengaluru/movie-bang-ET00306242-MT/20220310">Book tickets</a></button>
+          </div>
+        </div>
+        <div>
+          <div>
+            <img src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:oi-discovery-catalog@@icons@@like_202006280402.png,ox-24,oy-617,ow-29:ote-ODhrIGxpa2Vz,ots-29,otc-FFFFFF,oy-612,ox-70:q-80/et00110845-knjsyknsnu-portrait.jpg" alt="">
+          </div>
+          <div>
+            <h4>The Kashmir Files</h4>
+            <p>Releasing on 13 Mar,2022</p>
+            <button><a href="https://in.bookmyshow.com/buytickets/the-kashmir-files-bengaluru/movie-bang-ET00110845-MT/20220310">Book tickets</a></button>
+          </div>
+        </div>
+    </div>
+  </body>
+</html>
